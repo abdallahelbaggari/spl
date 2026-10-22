@@ -61,7 +61,7 @@ Setup:
 1. develop.pi → your mainnet app → copy the **API Key** → Cloudflare → Settings → Environment variables →
    add **`PI_API_KEY`** as a Secret (Production) → redeploy.
 2. develop.pi → App URL = `https://spl-pi.pages.dev`.
-3. Validate domain: in Cloudflare add the variable **`PI_VALIDATION_KEY`** with the key develop.pi shows, redeploy, then click Validate (SPL serves it at `/validation-key.txt`).
+3. Validate domain: put Pi's `validation-key.txt` at the **top level** of the repo, push, then click Validate.
 4. Test in the Pi Browser: My Football → Sign in with Pi → Support SPL → 1 π.
 
 Logging: every login and payment step writes one line tagged `SPL-PI`
@@ -70,21 +70,6 @@ View them in Cloudflare → your project → Functions → **Real-time Logs** (b
 The app also shows a step-by-step payment log on screen. The API key is never logged.
 
 Amounts: change in both `CONFIG.PAY_AMOUNTS` (index.html) and `ALLOWED_AMOUNTS` (server/pi.js).
-
-## Testnet (same repo, second Cloudflare project)
-
-The app picks the Pi network from its address: any host containing `testnet`
-(e.g. `spl-testnet.pages.dev`) runs Pi **testnet** (sandbox) and shows an amber "Pi Testnet" badge
-and stripe. Everything else (`spl-pi.pages.dev`, `spl.pi`) is **mainnet**.
-
-| Cloudflare project | Address | Secrets / variables |
-|---|---|---|
-| `spl-pi` (mainnet) | spl-pi.pages.dev | `PI_API_KEY` (mainnet app), `PI_VALIDATION_KEY` (mainnet), `FD_API_KEY`, `API_FOOTBALL_KEY`, KV `SPL_CACHE` |
-| `spl-testnet` (testnet) | spl-testnet.pages.dev | `PI_API_KEY` (testnet app), `PI_VALIDATION_KEY` (testnet), `PI_NETWORK=testnet`, `FD_API_KEY` |
-
-- Do **not** add `API_FOOTBALL_KEY` to testnet — both projects would share one 100/day allowance.
-- `/validation-key.txt` is served from `PI_VALIDATION_KEY`, so each app verifies its own domain.
-- Both projects deploy from the same `main` branch; one push updates both.
 
 ## Data providers — both completely free, used together
 

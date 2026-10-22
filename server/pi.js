@@ -1,6 +1,4 @@
-// Pi Network server helpers. Shared by /approve, /complete, /cancel-payment, /verify-user.
-// Mainnet or testnet is decided by which app's PI_API_KEY the Cloudflare project holds; set
-// PI_NETWORK=testnet on the testnet project so logs and health checks say so.
+// Pi Network server helpers (MAINNET). Shared by /approve, /complete, /cancel-payment, /verify-user.
 // PI_API_KEY comes from Cloudflare Pages → Settings → Environment variables (Secret).
 // Every step writes one JSON log line tagged "SPL-PI" → view in Cloudflare → Functions → Real-time Logs.
 // The API key is never logged or returned.
@@ -9,8 +7,6 @@ const PI_API = 'https://api.minepi.com/v2';
 
 // Amounts the app offers. Approve refuses anything else, so a tampered client can't create odd payments.
 export const ALLOWED_AMOUNTS = [0.5, 1, 5];
-
-export const network = (env) => ((env && env.PI_NETWORK) || 'mainnet').toLowerCase() === 'testnet' ? 'testnet' : 'mainnet';
 
 export function log(step, data = {}) {
   try { console.log(JSON.stringify({ tag: 'SPL-PI', step, at: new Date().toISOString(), ...data })); } catch {}
@@ -51,5 +47,5 @@ export async function piFetch(env, path, method = 'GET', body) {
 }
 
 export function health(name, env) {
-  return reply({ ok: true, endpoint: name, network: network(env), keyConfigured: !!env.PI_API_KEY });
+  return reply({ ok: true, endpoint: name, network: 'mainnet', keyConfigured: !!env.PI_API_KEY });
 }

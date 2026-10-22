@@ -336,9 +336,6 @@ footer.foot a{text-decoration:underline}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 
 /* Pi */
-.net-badge.test{background:rgba(255,181,71,.14);color:var(--amber)}
-.net-badge.test .pulse{background:var(--amber)}
-.test-strip{position:fixed;top:0;left:0;right:0;z-index:120;height:3px;background:repeating-linear-gradient(90deg,var(--amber) 0 14px,transparent 14px 22px);pointer-events:none}
 .net-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:12px;background:rgba(43,227,127,.12);color:var(--green);font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:10px}
 .pi-msg{display:block;margin-top:8px;font-size:12.5px;color:var(--muted);min-height:1em}
 .pay-card{margin:0 10px;padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line)}
@@ -572,9 +569,7 @@ footer.foot a{text-decoration:underline}
 
 const CONFIG = {
   SUPPORT_EMAIL: 'support.spl.pi@gmail.com',
-  // Network is chosen by the address: any host containing "testnet" (e.g. spl-testnet.pages.dev)
-  // runs on Pi TESTNET (sandbox). Everything else — spl-pi.pages.dev, spl.pi — is MAINNET.
-  PI_SANDBOX: /testnet/i.test(location.hostname),
+  PI_SANDBOX: false,          // MAINNET. Never set true on spl-pi.pages.dev
   PAY_AMOUNTS: [0.5, 1, 5],   // must match ALLOWED_AMOUNTS in server/pi.js
   LIVE_REFRESH_MS: 30000,
   PAGE_REFRESH_MS: 120000,
@@ -1276,7 +1271,7 @@ function viewMe() {
   ];
   app.innerHTML = `<div class="view">
     <div class="me-card">
-      <span class="net-badge ${CONFIG.PI_SANDBOX ? 'test' : ''}"><span class="pulse"></span>${CONFIG.PI_SANDBOX ? 'Pi Testnet' : 'Pi Mainnet'}</span>
+      <span class="net-badge"><span class="pulse"></span>Pi Mainnet</span>
       <h2>${piUser ? 'Hi, ' + esc(piUser) : 'Your football'}</h2>
       <p>${piUser ? 'Signed in with Pi. Your follows are saved on this device.' : 'Sign in with your Pi account. Follow clubs and competitions to put their matches first on Home.'}</p>
       ${piUser ? '<button class="btn ghost" id="piLogout">Sign out</button>' : '<button class="btn" id="piLogin">Sign in with Pi</button>'}
@@ -1306,7 +1301,7 @@ function viewMe() {
       <div><span>Privacy Policy</span><b><a href="#/privacy" style="color:var(--green)">Read</a></b></div>
       <div><span>Terms of Use</span><b><a href="#/terms" style="color:var(--green)">Read</a></b></div>
       <div><span>Introduction</span><b><button id="replayOnb" style="color:var(--green);font-weight:600">View again</button></b></div>
-      <div><span>Version</span><b>1.5.1 · ${CONFIG.PI_SANDBOX ? 'Pi Testnet' : 'Pi Mainnet'}</b></div>
+      <div><span>Version</span><b>1.4.0 · Pi Mainnet</b></div>
     </div>${footer()}</div>`;
   app.querySelectorAll('[data-set]').forEach((b) => b.addEventListener('click', () => {
     const k = b.dataset.set; settings[k] = !settings[k]; saveSettings();
@@ -1880,7 +1875,6 @@ window.addEventListener('hashchange', () => route());
 (async function boot() {
   try { PROVIDER = (await api('status')).data; } catch { PROVIDER = null; }
   if (PROVIDER && !PROVIDER.configured) PROVIDER = null;
-  if (CONFIG.PI_SANDBOX) { const t = document.createElement('div'); t.className = 'test-strip'; t.title = 'Pi Testnet'; document.body.appendChild(t); document.title = '[TESTNET] ' + document.title; }
   loadFav();
   route();
   setTimeout(() => { hideSplash(); let signed = false; try { signed = localStorage.getItem('spl.v1.piSignedIn') === '1'; } catch {} if (!signed && !store.get('welcomed', false)) showOnboarding(); }, 900);
