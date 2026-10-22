@@ -1,5 +1,12 @@
 {
   "version": 1,
-  "include": ["/api/*", "/approve", "/complete", "/cancel-payment", "/verify-user"],
+  "include": [
+    "/api/*",
+    "/approve",
+    "/complete",
+    "/cancel-payment",
+    "/verify-user",
+    "/validation-key.txt"
+  ],
   "exclude": []
 }
