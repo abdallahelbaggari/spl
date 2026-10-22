@@ -221,6 +221,11 @@ main{padding:0 0 calc(var(--nav-h) + var(--safe-b) + 24px);max-width:720px;margi
 .kv b{text-align:right;font-weight:600}
 
 /* h2h */
+.kick-in{margin:12px 10px 0;padding:14px 16px;border-radius:var(--r);background:linear-gradient(135deg,rgba(43,227,127,.14),rgba(43,227,127,.04));border:1px solid rgba(43,227,127,.3);display:flex;justify-content:space-between;align-items:center}
+.kick-in span{color:var(--muted);font-size:13px;font-weight:700}
+.kick-in b{font-family:var(--display);font-size:24px;color:var(--green)}
+button.li{width:100%;text-align:left}
+@media(min-width:720px){.kick-in{margin-left:0;margin-right:0}}
 .h2h-sum{display:grid;grid-template-columns:1fr 1fr 1fr;margin:12px 10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 6px;text-align:center}
 .h2h-sum b{display:block;font-family:var(--display);font-size:32px;font-weight:700;line-height:1}
 .h2h-sum small{color:var(--muted);font-size:12px}
@@ -979,7 +984,7 @@ function viewMatch(id, refresh) {
   load(`match/${id}`, (body) => {
     const first = !matchData || matchData.data.id !== body.data.id;
     matchData = body;
-    if (first) { rememberMatch(body.data); if (!refresh) state.matchTab = 'summary'; }
+    if (first) { rememberMatch(body.data); if (!refresh) state.matchTab = matchTabs(body.data)[0][0]; }
     paintHero(); paintMatchTabs(); paintMatchBody(id);
     every(body.data.state === 'live' ? CONFIG.LIVE_REFRESH_MS : body.data.state === 'pre' ? CONFIG.PAGE_REFRESH_MS : 10 * 60000, () => viewMatch(id, true));
   }, (e) => { $('#mHero').innerHTML = errorState(e); });
@@ -1007,9 +1012,33 @@ function paintHero() {
     <div class="board">${side(m.home)}<div class="mid">${mid}${pill}${subs.length ? `<div class="sub-line num">${esc(subs.join(' · '))}</div>` : ''}</div>${side(m.away)}</div>
   </div>`;
 }
+// Only show tabs that have real content for this match.
+function matchTabs(m) {
+  const hasEvents = Array.isArray(m.events) && (m.events.length > 0 || m.state !== 'pre');
+  const lineupsSoon = m.state === 'pre' && m.capabilities && m.capabilities.lineups && Date.parse(m.kickoff) - Date.now() < 3 * 3600e3;
+  const tabs = [];
+  if (hasEvents) tabs.push(['summary', 'Summary']); else tabs.push(['overview', 'Overview']);
+  if (m.lineups || lineupsSoon) tabs.push(['lineups', 'Line-ups']);
+  if (m.stats && m.stats.length) tabs.push(['stats', 'Stats']);
+  tabs.push(['h2h', 'Head-to-head']);
+  if (hasEvents) tabs.push(['info', 'Info']);
+  return tabs;
+}
 function paintMatchTabs() {
-  const tabs = [['summary', 'Summary'], ['lineups', 'Line-ups'], ['stats', 'Stats'], ['h2h', 'Head-to-head'], ['info', 'Info']];
+  const tabs = matchTabs(matchData.data);
+  if (!tabs.some(([k]) => k === state.matchTab)) state.matchTab = tabs[0][0];
   $('#mTabs').innerHTML = tabs.map(([k, l]) => `<button class="tab ${state.matchTab === k ? 'on' : ''}" data-t="${k}">${l}</button>`).join('');
+}
+function matchFacts(m) {
+  const rows = [
+    ['Competition', m.comp.name], ['Round', m.comp.round],
+    ['Kick-off', `${fmtDate(m.kickoff, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}, ${fmtTime(m.kickoff)}`],
+    ['Status', m.statusLabel],
+    ['Half-time', m.ht && m.state !== 'pre' ? `${m.ht.home} – ${m.ht.away}` : null],
+    ['Penalties', m.pen ? `${m.pen.home} – ${m.pen.away}` : null],
+    ['Venue', m.venue], ['Referee', m.referee], ['Your time zone', TZ],
+  ].filter(([, v]) => v);   // hide empty rows instead of showing "Not provided"
+  return `<div class="kv">${rows.map(([k, v]) => `<div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('')}</div>`;
 }
 function unavailable(what, m) {
   const reason = m.notes && m.notes.length ? m.notes[0] : `The data provider doesn’t supply ${what} for this match.`;
@@ -1019,6 +1048,20 @@ function paintMatchBody(id) {
   const el = $('#mBody'); const m = matchData.data;
   const meta = freshLine(matchData.meta, { live: m.state === 'live' });
   const t = state.matchTab;
+  if (t === 'overview') {
+    const countdown = m.state === 'pre' ? (() => { const ms = Date.parse(m.kickoff) - Date.now(); if (ms <= 0) return null; const h = Math.floor(ms / 3600e3), d = Math.floor(h / 24); return d >= 1 ? `in ${d} day${d > 1 ? 's' : ''}` : h >= 1 ? `in ${h} h ${Math.floor((ms % 3600e3) / 60e3)} min` : `in ${Math.max(1, Math.round(ms / 60e3))} min`; })() : null;
+    el.innerHTML = meta +
+      (countdown ? `<div class="kick-in"><span>Kick-off</span><b>${esc(countdown)}</b></div>` : '') +
+      `<div class="section-h"><h2>Match facts</h2></div>` + matchFacts(m) +
+      `<div class="section-h"><h2>More</h2></div><div class="list">
+        <button class="li" data-go="h2h"><div class="t"><b>Head-to-head</b><small>Previous meetings</small></div>${IC.chev}</button>
+        ${m.comp.id != null ? `<a class="li" href="#/competition/${esc(m.comp.id)}">${crest(m.comp.logo, m.comp.name)}<div class="t"><b>${esc(m.comp.name)}</b><small>Table, matches and top scorers</small></div>${IC.chev}</a>` : ''}
+        ${m.home.id != null ? `<a class="li" href="#/team/${esc(m.home.id)}">${crest(m.home.logo, m.home.name)}<div class="t"><b>${esc(m.home.name)}</b><small>Results, fixtures and squad</small></div>${IC.chev}</a>` : ''}
+        ${m.away.id != null ? `<a class="li" href="#/team/${esc(m.away.id)}">${crest(m.away.logo, m.away.name)}<div class="t"><b>${esc(m.away.name)}</b><small>Results, fixtures and squad</small></div>${IC.chev}</a>` : ''}
+      </div>` + footer();
+    el.querySelector('[data-go="h2h"]').onclick = () => { state.matchTab = 'h2h'; paintMatchTabs(); paintMatchBody(id); };
+    return;
+  }
   if (t === 'summary') {
     if (m.events === null) { el.innerHTML = meta + (m.state === 'pre' ? emptyState('Not started yet', `Kick-off ${fmtDate(m.kickoff)} at ${fmtTime(m.kickoff)}. Events appear here once the match begins.`, IC.pitch) : unavailable('match events', m)) + footer(); return; }
     if (!m.events.length) { el.innerHTML = meta + emptyState(m.state === 'pre' ? 'Not started yet' : 'No events yet', m.state === 'pre' ? 'Goals, cards and substitutions appear here live.' : 'No goals, cards or substitutions have been recorded.') + footer(); return; }
@@ -1058,12 +1101,7 @@ function paintMatchBody(id) {
         groupByComp(h.matches).map((g) => `<section class="group"><div class="group-h">${crest(g.comp.logo, g.comp.name)}<div class="t"><b>${esc(g.comp.name)}</b></div></div>${g.matches.map((x) => matchRow(x).replace('<div class="st">', `<div class="st" style="font-size:11px">${esc(fmtDate(x.kickoff, { day: 'numeric', month: 'short', year: '2-digit' }))}<br>`)).join('')}</section>`).join('') + footer();
     }, (e) => { el.innerHTML = errorState(e); });
   } else {
-    const rows = [
-      ['Competition', m.comp.name], ['Round', m.comp.round],
-      ['Kick-off', `${fmtDate(m.kickoff, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}, ${fmtTime(m.kickoff)}`],
-      ['Your time zone', TZ], ['Status', m.statusLabel], ['Venue', m.venue], ['Referee', m.referee],
-    ];
-    el.innerHTML = `<div class="kv">${rows.map(([k, v]) => `<div><span>${esc(k)}</span><b>${v ? esc(v) : '<span class="na">Not provided</span>'}</b></div>`).join('')}</div>` + footer();
+    el.innerHTML = matchFacts(m) + footer();
   }
 }
 function bindLu(id) { const s = $('#luSide'); if (s) s.onclick = (e) => { const b = e.target.closest('[data-s]'); if (!b) return; state.luSide = b.dataset.s; paintMatchBody(id); }; }
