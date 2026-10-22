@@ -1,1 +1,11 @@
-{"name": "spl-pi", "version": "1.0.0", "private": true}
+{
+  "name": "spl-pi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SPL — The Complete Football Experience (Pi Network PWA on Cloudflare Pages)",
+  "scripts": {
+    "test:fd": "MOCK=fd node test/serve.mjs 8787",
+    "test:af": "MOCK=af node test/serve.mjs 8788"
+  }
+}
