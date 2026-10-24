@@ -312,215 +312,132 @@ footer.foot a{text-decoration:underline}
 .splash .tag{color:var(--muted);font-size:13.5px;letter-spacing:.04em}
 .splash .dom{position:absolute;bottom:calc(28px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:12px;letter-spacing:.1em}
 @keyframes pop{from{transform:scale(.85);opacity:0}to{transform:none;opacity:1}}
-.onb{position:fixed;inset:0;z-index:95;background:var(--bg);display:flex;flex-direction:column;overflow:hidden;animation:in .25s ease-out}
-.onb-top{display:flex;align-items:center;justify-content:space-between;padding:calc(12px + env(safe-area-inset-top,0px)) 18px 0;height:60px}
-.onb-brand{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:.1em}
-.onb-brand svg{width:28px;height:28px}
-.onb-skip{color:var(--muted);font-weight:700;font-size:14px;padding:10px 4px}
-.onb-track{flex:1;display:flex;transition:transform .38s cubic-bezier(.2,.8,.2,1);touch-action:pan-y}
-.onb-slide{flex:0 0 100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 26px 0;text-align:center}
-.onb-art{width:100%;max-width:330px;aspect-ratio:1/1;margin-bottom:26px;position:relative}
-.onb-art svg{width:100%;height:100%;display:block}
-.onb-slide h2{margin:0 0 10px;font-family:var(--display);font-weight:700;font-size:34px;line-height:1.02;letter-spacing:.01em}
-.onb-slide h2 em{font-style:normal;color:var(--green)}
-.onb-slide p{margin:0;max-width:330px;color:var(--muted);font-size:15px;line-height:1.5}
-.onb-foot{padding:14px 22px calc(22px + env(safe-area-inset-bottom,0px))}
-.onb-foot .btn{width:100%;height:54px;font-size:16px;border-radius:14px}
-.onb-guest[hidden],.onb-legal[hidden]{display:none}
-.onb-guest{display:block;width:100%;margin-top:10px;height:44px;color:var(--muted);font-weight:700;font-size:14px}
-.onb-domain{text-align:center;margin-top:12px;color:var(--dim);font-size:12px;letter-spacing:.12em}
-.onb-domain b{color:var(--muted);font-weight:700}
-.onb-login .lg-mark{width:96px;height:96px;margin:0 auto 18px;filter:drop-shadow(0 10px 30px rgba(26,92,255,.25))}
-.onb-login .lg-name{font-family:var(--display);font-weight:700;font-size:54px;letter-spacing:.14em;line-height:1;padding-left:.14em}
-.onb-login .lg-dom{display:inline-block;margin:10px 0 18px;padding:5px 14px;border-radius:20px;border:1px solid rgba(26,92,255,.35);color:var(--green);font-weight:700;letter-spacing:.08em;font-size:14px}
-.onb-perks{display:grid;gap:10px;margin:22px auto 0;max-width:320px;text-align:left}
-.onb-perks div{display:flex;gap:10px;align-items:center;color:var(--text);font-size:14px}
-.onb-perks svg{flex:none;width:20px;height:20px;color:var(--green)}
-.onb-msg{min-height:18px;margin-top:8px;text-align:center;font-size:12.5px;color:var(--amber)}
-.pi-glyph{font-family:var(--display);font-size:22px;line-height:1}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-
-/* Pi */
-.net-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:12px;background:rgba(26,92,255,.12);color:var(--green);font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:10px}
-.pi-msg{display:block;margin-top:8px;font-size:12.5px;color:var(--muted);min-height:1em}
-.pay-card{margin:0 10px;padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
-.pay-card p{margin:0 0 14px;color:var(--muted);font-size:13.5px}
-.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.amt{height:52px;border-radius:12px;background:var(--surface2);border:1px solid var(--line2);font-family:var(--display);font-weight:700;font-size:21px}
-.amt:active{background:var(--green);color:#FFFFFF}
-.pay-log{margin-top:14px;padding:10px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:12px;max-height:180px;overflow-y:auto}
-.pay-log .plog{display:flex;gap:8px;padding:3px 0;line-height:1.35}
-.pay-log time{color:var(--dim);font-variant-numeric:tabular-nums;flex:none}
-.pay-log .ok span{color:var(--green)} .pay-log .err span{color:var(--red)} .pay-log .warn span{color:var(--amber)}
-.pl-empty{color:var(--dim)}
-@media(min-width:720px){.pay-card{margin-left:0;margin-right:0}}
-/* ---- onboarding scenes (SVG + CSS, play when the slide is active) ---- */
-.onb-art svg *{transform-box:fill-box;transform-origin:center}
-.onb-art .s1-ball,.onb-art .s1-ball *{transform-box:view-box;transform-origin:0 0}
-.s1-ball{transform:translate(168px,158px) scale(.45)}
-.s1-spin{transform-box:view-box!important;transform-origin:0 0!important}
-.s1-h1{opacity:0}
-.s1-conf *{opacity:0}
-.s1-flash{opacity:0}
-.s1-board-glow{stroke-opacity:.35}
-.s1-net{transform-origin:50% 0!important}
-.s1-dot{animation:blink 1.4s ease-in-out infinite}
-.s1-beam{opacity:.5}
-.onb-slide.play .s1-beam{animation:beam 7s ease-in-out infinite alternate}
-.onb-slide.play .s1-beam.b2{animation-duration:8.5s;animation-delay:-3s}
-.onb-slide.play .s1-ball{animation:s1ball 6s cubic-bezier(.3,.1,.3,1) infinite both}
-.onb-slide.play .s1-spin{animation:spin 6s linear infinite}
-.onb-slide.play .s1-trail{animation:s1trail 6s ease-out infinite both}
-.onb-slide.play .s1-net{animation:s1net 6s ease-out infinite both}
-.onb-slide.play .s1-flash{animation:s1flash 6s ease-out infinite both}
-.onb-slide.play .s1-conf *{animation:s1conf 6s cubic-bezier(.15,.7,.3,1) infinite both}
-.onb-slide.play .s1-h1{animation:s1h1 6s ease-in-out infinite both}
-.onb-slide.play .s1-h2{animation:s1h2 6s ease-in-out infinite both}
-.onb-slide.play .s1-goal{animation:s1goal 6s cubic-bezier(.3,1.6,.5,1) infinite both}
-.onb-slide.play .s1-board-glow{animation:s1glow 6s ease-out infinite both}
-.onb-slide.play .s1-board{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
-@keyframes beam{from{opacity:.25;transform:skewX(-4deg)}to{opacity:.6;transform:skewX(4deg)}}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(1080deg)}}
-@keyframes s1ball{
-  0%{transform:translate(112px,286px) scale(1);opacity:0}
-  6%,12%{transform:translate(112px,286px) scale(1);opacity:1}
-  22%{transform:translate(122px,236px) scale(.84)}
-  32%{transform:translate(142px,190px) scale(.64)}
-  40%{transform:translate(166px,158px) scale(.48)}
-  45%{transform:translate(170px,164px) scale(.45);opacity:1}
-  82%{transform:translate(170px,164px) scale(.45);opacity:1}
-  90%,100%{transform:translate(170px,164px) scale(.45);opacity:0}}
-@keyframes s1trail{0%,12%{stroke-dashoffset:160;opacity:.9}40%{stroke-dashoffset:0;opacity:.9}60%,100%{stroke-dashoffset:0;opacity:0}}
-@keyframes s1net{0%,40%{transform:scale(1,1)}45%{transform:scale(1.07,1.22)}52%{transform:scale(.98,.94)}60%,100%{transform:scale(1,1)}}
-@keyframes s1flash{0%,40%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1)}62%,100%{opacity:0;transform:scale(1.5)}}
-@keyframes s1conf{0%,42%{opacity:0;transform:translate(0,0) rotate(0)}46%{opacity:1}72%{opacity:1;transform:translate(var(--dx),var(--dy)) rotate(var(--r))}86%,100%{opacity:0;transform:translate(var(--dx),calc(var(--dy) + 40px)) rotate(var(--r))}}
-@keyframes s1h1{0%,42%{opacity:1;transform:translateY(0)}48%{opacity:0;transform:translateY(-30px)}93%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
-@keyframes s1h2{0%,42%{opacity:0;transform:translateY(30px)}48%,88%{opacity:1;transform:translateY(0)}94%,100%{opacity:0;transform:translateY(-30px)}}
-@keyframes s1goal{0%,43%{opacity:0;transform:scale(.2) rotate(-8deg)}50%{opacity:1;transform:scale(1) rotate(0)}84%{opacity:1;transform:scale(1)}92%,100%{opacity:0;transform:scale(.8)}}
-@keyframes s1glow{0%,42%{stroke-opacity:.35}47%{stroke-opacity:1;stroke-width:4}70%,100%{stroke-opacity:.35;stroke-width:2}}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-/* scene 2 */
-.s2-pass{stroke-dashoffset:0;opacity:.0}
-.s2-ring{opacity:0}
-.onb-slide.play .s2-pitch{animation:slideL .7s cubic-bezier(.2,.8,.2,1) both}
-.onb-slide.play .s2-stats{animation:slideR .7s .35s cubic-bezier(.2,.8,.2,1) both}
-.onb-slide.play .s2-pl{animation:pop .5s var(--d) cubic-bezier(.3,1.6,.5,1) both}
-.onb-slide.play .s2-bar{transform-origin:left center!important;animation:grow .9s var(--d) cubic-bezier(.2,.8,.2,1) both}
-.onb-slide.play .s2-val{animation:fadeUp .5s var(--d) ease-out both}
-.onb-slide.play .s2-card.c1{animation:cardIn .6s 1.5s cubic-bezier(.3,1.5,.5,1) both,floatR 4s 2.1s ease-in-out infinite}
-.onb-slide.play .s2-card.c2{animation:cardIn2 .6s 1.7s cubic-bezier(.3,1.5,.5,1) both,floatR2 4.6s 2.3s ease-in-out infinite}
-.onb-slide.play .s2-pass{animation:pass 4s 1.2s linear infinite both}
-.onb-slide.play .s2-pass.p2{animation-delay:1.7s}.onb-slide.play .s2-pass.p3{animation-delay:2.2s}.onb-slide.play .s2-pass.p4{animation-delay:2.7s}
-.onb-slide.play .s2-ring{animation:ring 4s 1.6s ease-out infinite both}
-.onb-slide.play .s2-ring.r2{animation-delay:2.1s}.onb-slide.play .s2-ring.r3{animation-delay:2.6s}.onb-slide.play .s2-ring.r4{animation-delay:3.1s}
-.s2-card.c1{transform:rotate(-12deg)}.s2-card.c2{transform:rotate(10deg)}
-@keyframes slideL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
-@keyframes slideR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
-@keyframes pop{0%{opacity:0;transform:translateY(14px) scale(.2)}100%{opacity:1;transform:none}}
-@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes cardIn{from{opacity:0;transform:translateY(-30px) rotate(-60deg) scale(.4)}to{opacity:1;transform:rotate(-12deg)}}
-@keyframes cardIn2{from{opacity:0;transform:translateY(-30px) rotate(60deg) scale(.4)}to{opacity:1;transform:rotate(10deg)}}
-@keyframes floatR{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-8deg) translateY(-5px)}}
-@keyframes floatR2{0%,100%{transform:rotate(10deg) translateY(0)}50%{transform:rotate(14deg) translateY(-6px)}}
-@keyframes pass{0%{opacity:1;stroke-dashoffset:var(--len,80)}12%{opacity:1;stroke-dashoffset:0}55%{opacity:1;stroke-dashoffset:0}70%,100%{opacity:0;stroke-dashoffset:0}}
-.s2-pass.p1{--len:40px}.s2-pass.p2{--len:52px}.s2-pass.p3{--len:76px}.s2-pass.p4{--len:62px}
-@keyframes ring{0%{opacity:.9;transform:scale(.6)}25%{opacity:0;transform:scale(2)}100%{opacity:0;transform:scale(2)}}
-
-/* scene 3 */
-.s3-rays{opacity:0}
-.onb-slide.play .s3-main{animation:shieldIn .8s .1s cubic-bezier(.3,1.5,.5,1) both}
-.onb-slide.play .s3-side.l{animation:sideL .8s .35s cubic-bezier(.3,1.4,.5,1) both,bob 4s 1.2s ease-in-out infinite}
-.onb-slide.play .s3-side.r{animation:sideR .8s .45s cubic-bezier(.3,1.4,.5,1) both,bob 4.4s 1.4s ease-in-out infinite}
-.onb-slide.play .s3-star{animation:starPop .7s .7s cubic-bezier(.3,1.8,.5,1) both,twinkle 2.4s 1.6s ease-in-out infinite}
-.onb-slide.play .s3-rays{animation:rays 2.4s .8s ease-out infinite}
-.onb-slide.play .s3-chip{animation:pop .5s 1.1s cubic-bezier(.3,1.6,.5,1) both}
-.onb-slide.play .s3-note{animation:noteUp .7s 1.4s cubic-bezier(.2,.9,.3,1.2) both}
-.onb-slide.play .s3-bell{transform-origin:50% 10%!important;animation:ring2 2.4s 2s ease-in-out infinite}
-.onb-slide.play .s3-spark path{animation:spark 2.6s ease-in-out infinite both}
-.onb-slide.play .s3-spark .k2{animation-delay:.6s}.onb-slide.play .s3-spark .k3{animation-delay:1.2s}.onb-slide.play .s3-spark .k4{animation-delay:1.8s}
-@keyframes shieldIn{from{opacity:0;transform:translateY(60px) scale(.6)}to{opacity:1;transform:none}}
-@keyframes sideL{from{opacity:0;transform:translate(-50px,30px) rotate(-20deg)}to{opacity:1;transform:none}}
-@keyframes sideR{from{opacity:0;transform:translate(50px,30px) rotate(20deg)}to{opacity:1;transform:none}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes starPop{from{opacity:0;transform:scale(0) rotate(-90deg)}to{opacity:1;transform:none}}
-@keyframes twinkle{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
-@keyframes rays{0%{opacity:0;transform:scale(.7)}20%{opacity:.9}60%,100%{opacity:0;transform:scale(1.25)}}
-@keyframes noteUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-@keyframes ring2{0%,40%,100%{transform:rotate(0)}5%{transform:rotate(16deg)}10%{transform:rotate(-14deg)}15%{transform:rotate(10deg)}20%{transform:rotate(-6deg)}25%{transform:rotate(0)}}
-@keyframes spark{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
-
-
-/* scene 4: leagues worldwide */
-.onb-slide.play .s4-globe{animation:pop .8s .05s cubic-bezier(.3,1.4,.5,1) both}
-.onb-slide.play .s4-mer{transform-box:view-box!important;transform-origin:0 0!important;animation:mer 9s linear infinite}
-.onb-slide.play .s4-shine{transform-box:view-box!important;transform-origin:0 0!important;animation:shine 4.5s ease-in-out infinite}
-.onb-slide.play .s4-orbit{transform-box:view-box!important;transform-origin:160px 160px!important;animation:orbit 30s linear infinite}
-.onb-slide.play .s4-pin{transform-origin:50% 100%!important;animation:pinDrop .6s var(--d) cubic-bezier(.3,1.6,.5,1) both}
-.onb-slide.play .s4-ring{animation:ring 2.4s calc(var(--d) + .6s) ease-out infinite both}
-.onb-slide.play .s4-chip{animation:chipIn .6s var(--d) cubic-bezier(.2,.9,.3,1.2) both,bob 4s calc(var(--d) + .8s) ease-in-out infinite}
-.s4-ring{opacity:0}
-@keyframes mer{from{transform:translateX(0)}to{transform:translateX(-176px)}}
-@keyframes shine{0%{transform:translateX(-80px)}60%,100%{transform:translateX(260px)}}
-@keyframes orbit{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes pinDrop{from{opacity:0;transform:translateY(-26px) scale(.6)}to{opacity:1;transform:none}}
-@keyframes chipIn{from{opacity:0;transform:translateY(12px) scale(.85)}to{opacity:1;transform:none}}
-
-/* scene 5: tables */
-.s5-p1{opacity:0}
-.s5-row.rc{transform:translateY(-70px)}
-.s5-row.ra,.s5-row.rb{transform:translateY(35px)}
-.onb-slide.play .s5-card{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
-.onb-slide.play .s5-row{animation:rowIn .5s var(--d) cubic-bezier(.2,.8,.2,1) both}
-.onb-slide.play .s5-row.rc{animation:rowIn .5s var(--d) cubic-bezier(.2,.8,.2,1) both,climb 6.5s 1s cubic-bezier(.5,0,.2,1) infinite both}
-.onb-slide.play .s5-row.ra,.onb-slide.play .s5-row.rb{animation:rowIn .5s var(--d) cubic-bezier(.2,.8,.2,1) both,drop 6.5s 1s cubic-bezier(.5,0,.2,1) infinite both}
-.onb-slide.play .s5-p1{animation:p1 6.5s 1s ease infinite both}
-.onb-slide.play .s5-p2{animation:p2 6.5s 1s ease infinite both}
-.onb-slide.play .s5-plus{animation:plus 6.5s 1s cubic-bezier(.3,1.6,.5,1) infinite both}
-.onb-slide.play .s5-cup{animation:cup 6.5s 1s cubic-bezier(.3,1.6,.5,1) infinite both}
-.s5-plus,.s5-cup{opacity:1}
-@keyframes rowIn{from{opacity:0;transform:translateX(30px)}to{opacity:1}}
-@keyframes climb{0%,25%{transform:translateY(0)}45%,88%{transform:translateY(-70px)}96%,100%{transform:translateY(0)}}
-@keyframes drop{0%,25%{transform:translateY(0)}45%,88%{transform:translateY(35px)}96%,100%{transform:translateY(0)}}
-@keyframes p1{0%,22%{opacity:1}28%,92%{opacity:0}100%{opacity:1}}
-@keyframes p2{0%,22%{opacity:0}28%,92%{opacity:1}100%{opacity:0}}
-@keyframes plus{0%,22%{opacity:0;transform:scale(.3)}30%{opacity:1;transform:scale(1)}80%{opacity:1;transform:scale(1)}88%,100%{opacity:0;transform:scale(.8)}}
-@keyframes cup{0%,40%{opacity:0;transform:scale(.2) rotate(-25deg)}50%{opacity:1;transform:scale(1.1) rotate(6deg)}56%,84%{opacity:1;transform:scale(1) rotate(0)}92%,100%{opacity:0;transform:scale(.6)}}
-
-/* story-style progress + obvious controls */
-.onb-bars{display:flex;gap:5px;padding:4px 18px 0}
-.onb-bars i{flex:1;height:3.5px;border-radius:2px;background:rgba(11,27,51,.16);overflow:hidden;position:relative}
-.onb-bars i b{position:absolute;inset:0;width:0;background:var(--green);border-radius:2px}
-.onb-bars i.done b{width:100%}
-.onb-bars i.on b{animation:fillbar var(--dur,6.5s) linear forwards}
-.onb-bars.paused i.on b{animation-play-state:paused}
-.onb-bars.hide{visibility:hidden}
-@keyframes fillbar{from{width:0}to{width:100%}}
-.onb-skip{border:1px solid var(--line2);border-radius:20px;padding:8px 16px!important;color:var(--text)!important;background:rgba(11,27,51,.04);display:flex;align-items:center;gap:4px}
-.onb-count{display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--dim);margin-bottom:12px}
-.onb-foot .btn .arr{font-size:20px;line-height:1;margin-left:2px}
-
-/* login page */
-.onb-slide.play .lg-mark{animation:pop .7s .1s cubic-bezier(.3,1.6,.5,1) both,halo 3s 1s ease-in-out infinite}
-.onb-slide.play .lg-name{animation:fadeUp .6s .3s ease-out both}
-.onb-slide.play .lg-dom{animation:fadeUp .6s .45s ease-out both}
-.onb-slide.play .onb-perks div{animation:fadeUp .5s ease-out both}
-.onb-slide.play .onb-perks div:nth-child(1){animation-delay:.6s}.onb-slide.play .onb-perks div:nth-child(2){animation-delay:.72s}.onb-slide.play .onb-perks div:nth-child(3){animation-delay:.84s}
-@keyframes halo{0%,100%{filter:drop-shadow(0 10px 26px rgba(26,92,255,.2))}50%{filter:drop-shadow(0 10px 40px rgba(26,92,255,.5))}}
-.onb-slide h2,.onb-slide p{transition:none}
-.onb-slide.play h2{animation:fadeUp .6s .15s ease-out both}
-.onb-slide.play > p{animation:fadeUp .6s .28s ease-out both}
-.legal{padding:18px 18px 0;max-width:680px}
-.legal h1{font-family:var(--display);font-size:32px;margin:6px 0 2px}
-.legal .upd{color:var(--dim);font-size:12.5px;margin:0 0 14px}
-.legal h3{font-size:15px;margin:22px 0 6px}
-.legal p,.legal li{color:#33435C;font-size:14px;line-height:1.6}
-.legal ul{padding-left:18px;margin:6px 0}
-.legal li{margin:6px 0}
-.legal b{color:var(--text)}
-.legal .other a{color:var(--green);font-weight:700}
+/* ===== Onboarding v3 (photographic) ===== */
+.onb{position:fixed;inset:0;z-index:95;background:#061230;color:#fff;display:flex;flex-direction:column;overflow:hidden;animation:in .25s ease-out;font-family:var(--body)}
+.onb-top{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top,0px)) 18px 0}
+.onb-brand{display:flex;align-items:center;gap:10px}
+.onb-brand svg{width:40px;height:40px;filter:drop-shadow(0 6px 18px rgba(26,92,255,.45))}
+.onb-brand b{display:block;font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.06em;line-height:.95}
+.onb-brand small{display:block;font-size:10.5px;color:rgba(255,255,255,.75);letter-spacing:.02em;margin-top:2px}
+.onb-skip{color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.onb-track{flex:1;display:flex;transition:transform .5s cubic-bezier(.2,.8,.2,1);touch-action:pan-y;min-height:0}
+.onb-slide{flex:0 0 100%;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.ob-photo{position:absolute;inset:0;background-size:cover;background-position:center top;transform-origin:50% 30%}
+.onb-slide.play .ob-photo{animation:kenburns 9s ease-out both}
+@keyframes kenburns{from{transform:scale(1.18) translateY(2%)}to{transform:scale(1.02) translateY(0)}}
+.ob-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,18,48,.55) 0%,rgba(6,18,48,.05) 22%,rgba(6,18,48,.25) 48%,rgba(6,18,48,.92) 70%,#061230 86%)}
+.ob-shade.soft{background:linear-gradient(180deg,rgba(6,18,48,.86) 0%,rgba(6,18,48,.78) 40%,#061230 78%)}
+.ob-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,rgba(26,92,255,.45),transparent);left:50%;top:38%;transform:translate(-50%,-50%);pointer-events:none}
+.ob-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;padding:96px 22px 0;max-width:520px;width:100%;margin:0 auto}
+.ob-content.bottom{justify-content:flex-end;padding-bottom:12px}
+.ob-h{margin:0;font-weight:800;font-size:clamp(30px,8.6vw,40px);line-height:1.04;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.ob-h em{font-style:normal;color:#4C8DFF;background:linear-gradient(90deg,#5B9BFF,#2F6BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ob-p{margin:12px 0 0;color:rgba(255,255,255,.82);font-size:15px;line-height:1.5;max-width:420px}
+.onb-slide.play .ob-h{animation:obUp .7s .1s cubic-bezier(.2,.8,.2,1) both}
+.onb-slide.play .ob-p{animation:obUp .7s .22s cubic-bezier(.2,.8,.2,1) both}
+@keyframes obUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+/* phone mockup */
+.ob-phone{position:relative;width:210px;height:430px;border-radius:34px;background:#0B1330;padding:8px;box-shadow:0 0 0 1.5px rgba(255,255,255,.18),0 30px 70px rgba(0,0,0,.55),0 0 60px rgba(26,92,255,.35);flex:none}
+.ob-phone::before{content:"";position:absolute;top:13px;left:50%;width:62px;height:16px;margin-left:-31px;border-radius:10px;background:#0B1330;z-index:3}
+.ob-screen{position:relative;width:100%;height:100%;border-radius:27px;overflow:hidden;background:#F4F7FB;color:#0B1B33;font-size:9px}
+.onb-slide.play .ob-phone{animation:phoneIn .9s .15s cubic-bezier(.2,.9,.25,1.1) both}
+@keyframes phoneIn{from{opacity:0;transform:translateY(40px) rotate(-4deg) scale(.92)}to{opacity:1;transform:none}}
+.ms-status{display:flex;justify-content:space-between;padding:10px 16px 4px;font-weight:700;font-size:8.5px}
+.ms-bar{display:flex;align-items:center;justify-content:center;gap:5px;padding:4px 0 8px;font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.05em}
+.ms-bar svg{width:15px;height:15px}
+.ms-tabs{display:flex;gap:5px;padding:0 10px 7px}
+.ms-tabs span{flex:1;text-align:center;padding:5px 0;border-radius:12px;background:#fff;font-weight:700;font-size:8px;color:#5B6B82;box-shadow:0 1px 2px rgba(11,27,51,.06)}
+.ms-tabs span.on{background:#1A5CFF;color:#fff}
+.ms-h{display:flex;justify-content:space-between;padding:4px 12px;font-weight:800;font-size:8px;color:#5B6B82;text-transform:uppercase;letter-spacing:.06em}
+.ms-h b{color:#E5354A;display:flex;align-items:center;gap:3px}
+.ms-card{margin:0 8px 6px;background:#fff;border-radius:10px;box-shadow:0 1px 2px rgba(11,27,51,.05),0 3px 10px rgba(11,27,51,.06);overflow:hidden}
+.ms-row{display:grid;grid-template-columns:1fr 38px 1fr;align-items:center;padding:8px 7px;gap:3px}
+.ms-row+.ms-row{border-top:1px solid rgba(11,27,51,.06)}
+.ms-t{display:flex;align-items:center;gap:5px;font-weight:700;font-size:8.5px;min-width:0}
+.ms-t.r{flex-direction:row-reverse;text-align:right}
+.ms-t i{width:16px;height:16px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:6.5px;font-weight:800}
+.ms-t span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ms-s{text-align:center;font-family:var(--display);font-weight:700;font-size:15px;line-height:1}
+.ms-s small{display:block;font-family:var(--body);font-size:7px;font-weight:800;color:#1A5CFF;margin-top:2px}
+.ms-s small.ht{color:#5B6B82}
+.ms-s.up{font-size:11px;color:#5B6B82}
+.ms-flash{animation:msFlash 1.2s ease-out}
+@keyframes msFlash{0%{background:rgba(26,92,255,.18)}100%{background:transparent}}
+.ms-nav{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-around;padding:7px 0 10px;background:#fff;border-top:1px solid rgba(11,27,51,.07);font-size:6.5px;font-weight:700;color:#8E9BB0}
+.ms-nav span{display:flex;flex-direction:column;align-items:center;gap:2px}
+.ms-nav span.on{color:#1A5CFF}
+.ms-nav i{width:12px;height:12px;border-radius:3px;border:1.6px solid currentColor}
+/* match centre mockup */
+.mc-hero{background:linear-gradient(160deg,#1A5CFF,#0E3FB8);color:#fff;padding:24px 10px 12px;text-align:center}
+.mc-comp{font-size:7.5px;opacity:.85;font-weight:700}
+.mc-board{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;margin-top:8px}
+.mc-board .tm{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:700;font-size:7.5px}
+.mc-board .tm i{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:8px;font-weight:800}
+.mc-score{font-family:var(--display);font-weight:700;font-size:28px;line-height:1}
+.mc-min{display:inline-block;margin-top:3px;background:#fff;color:#1A5CFF;border-radius:8px;padding:1px 6px;font-size:7px;font-weight:800}
+.mc-tabs{display:flex;justify-content:space-around;background:#fff;font-size:7.5px;font-weight:700;color:#5B6B82;border-bottom:1px solid rgba(11,27,51,.07)}
+.mc-tabs span{padding:7px 0}
+.mc-tabs span.on{color:#1A5CFF;box-shadow:inset 0 -2px 0 #1A5CFF}
+.mc-pitch{margin:7px 8px;height:96px;border-radius:8px;background:repeating-linear-gradient(90deg,#1F7A3E 0 12.5%,#1B7038 12.5% 25%);position:relative;overflow:hidden}
+.mc-pitch::before{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.4);border-radius:3px}
+.mc-pitch::after{content:"";position:absolute;left:50%;top:5px;bottom:5px;border-left:1px solid rgba(255,255,255,.4)}
+.mc-pitch b{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.4);transform:translate(-50%,-50%)}
+.mc-pitch b.a{background:#FFC83D}
+.onb-slide.play .mc-pitch b{animation:dotIn .4s both}
+@keyframes dotIn{from{opacity:0;transform:translate(-50%,-50%) scale(0)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.mc-ev{display:flex;align-items:center;gap:6px;padding:5px 10px;font-size:7.5px;font-weight:700}
+.mc-ev+.mc-ev{border-top:1px solid rgba(11,27,51,.06)}
+.mc-ev em{font-style:normal;width:22px;color:#5B6B82;font-weight:800}
+.mc-ev small{display:block;color:#8E9BB0;font-weight:600;font-size:6.5px}
+.mc-ev .ic{width:12px;height:12px;flex:none}
+.onb-slide.play .mc-ev{animation:obUp .5s both}
+/* feature list beside phone */
+.ob-split{display:flex;align-items:center;gap:14px;margin-top:22px}
+.ob-feats{display:flex;flex-direction:column;gap:16px;min-width:0}
+.ob-feat{display:flex;gap:10px;align-items:flex-start}
+.ob-feat .fi{width:40px;height:40px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#2F6BFF,#1A4FD9);box-shadow:0 6px 18px rgba(26,92,255,.4)}
+.ob-feat .fi svg{width:21px;height:21px}
+.ob-feat b{display:block;font-size:13.5px;line-height:1.2}
+.ob-feat small{display:block;color:rgba(255,255,255,.7);font-size:11.5px;line-height:1.35;margin-top:2px}
+.onb-slide.play .ob-feat{animation:featIn .55s both}
+@keyframes featIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+/* league grid */
+.ob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.ob-tile{border-radius:14px;padding:12px 6px 10px;text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.ob-tile svg{width:28px;height:28px;display:block;margin:0 auto 7px}
+.ob-tile b{display:block;font-size:11.5px;line-height:1.2}
+.ob-tile small{display:block;font-size:9.5px;color:rgba(255,255,255,.62);margin-top:2px}
+.ob-tile.hl{background:linear-gradient(160deg,rgba(47,107,255,.5),rgba(26,79,217,.35));border-color:rgba(120,165,255,.5)}
+.onb-slide.play .ob-tile{animation:tileIn .5s both}
+@keyframes tileIn{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:none}}
+/* join / sign-in */
+.ob-card{margin-top:20px;padding:16px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.ob-signin{width:100%;height:60px;border-radius:30px;background:linear-gradient(90deg,#2F6BFF,#1A4FD9);color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 10px 28px rgba(26,92,255,.45)}
+.ob-signin .pi{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:21px}
+.ob-signin span small{display:block;font-size:11px;font-weight:600;opacity:.85;margin-top:1px}
+.ob-signin:disabled{opacity:.7}
+.ob-guest{display:block;width:100%;margin-top:12px;height:40px;color:rgba(255,255,255,.88);font-weight:700;font-size:14px}
+.ob-legal{text-align:center;font-size:11px;color:rgba(255,255,255,.6);margin-top:4px}
+.ob-legal a{color:rgba(255,255,255,.9);text-decoration:underline}
+.ob-msg{min-height:16px;text-align:center;font-size:12px;color:#FFC83D;margin-top:6px}
+.ob-perks{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.78)}
+.ob-perks span{display:flex;align-items:center;gap:5px}
+.ob-perks svg{width:14px;height:14px}
+.onb-slide.play .ob-card{animation:obUp .7s .3s cubic-bezier(.2,.8,.2,1) both}
+/* footer: dots + Next */
+.onb-foot{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 22px calc(18px + env(safe-area-inset-bottom,0px));max-width:520px;width:100%;margin:0 auto}
+.onb-foot.hide{visibility:hidden;height:0;padding:0;overflow:hidden}
+.ob-dots{display:flex;gap:7px;align-items:center}
+.ob-dots i{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.3);position:relative;overflow:hidden;transition:width .35s}
+.ob-dots i.done{background:#4C8DFF}
+.ob-dots i.on{width:30px;background:rgba(255,255,255,.3)}
+.ob-dots i.on::after{content:"";position:absolute;inset:0;width:0;background:#4C8DFF;animation:obFill var(--dur,6500ms) linear forwards}
+.ob-dots.paused i.on::after{animation-play-state:paused}
+@keyframes obFill{to{width:100%}}
+.ob-next{height:52px;padding:0 30px;border-radius:26px;background:linear-gradient(90deg,#2F6BFF,#1A4FD9);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(26,92,255,.45)}
+.ob-next svg{width:18px;height:18px}
+@media (max-height:700px){.ob-phone{width:180px;height:368px}.ob-content{padding-top:84px}.ob-grid{gap:6px}.ob-tile{padding:9px 5px 8px}}
+@media (prefers-reduced-motion:reduce){.onb-slide .ob-photo{animation:none!important;transform:none}}
 .onb-legal{text-align:center;margin-top:10px;font-size:11.5px;color:var(--dim)}
 .onb-legal a{color:var(--muted);text-decoration:underline}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -559,7 +476,6 @@ footer.foot a{text-decoration:underline}
 .pl.gk .n{background:#F5B800;color:#0B1B33}
 .empty .big{color:var(--text)}
 .legal b{color:var(--text)}
-.onb-skip{background:#fff}
 .lg-mark{filter:drop-shadow(0 10px 30px rgba(26,92,255,.3))}
 </style>
 </head>
@@ -1577,349 +1493,169 @@ setTimeout(hideSplash, 2500); // never block the app for long, even on slow netw
 const MARK_SVG = '<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1A5CFF"/><rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/><circle cx="32" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.2"/><path d="M8 32h48" stroke="#fff" stroke-width="3.2"/><circle cx="32" cy="32" r="3.6" fill="#fff"/></svg>';
 
 // Original illustrations (no club crests or real players).
-const ART = {
-  live: `<svg viewBox="0 0 320 320" role="img" aria-label="Animated goal and live scoreboard">
-    <defs>
-      <radialGradient id="s1g" cx="50%" cy="42%" r="62%"><stop offset="0" stop-color="#1A5CFF" stop-opacity=".30"/><stop offset="1" stop-color="#1A5CFF" stop-opacity="0"/></radialGradient>
-      <linearGradient id="s1p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0F3520"/><stop offset="1" stop-color="#17502F"/></linearGradient>
-      <linearGradient id="s1beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-      <radialGradient id="s1flash"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".4" stop-color="#1A5CFF" stop-opacity=".45"/><stop offset="1" stop-color="#1A5CFF" stop-opacity="0"/></radialGradient>
-      <clipPath id="s1clip"><rect x="112" y="40" width="96" height="50"/></clipPath>
-      <clipPath id="s1pc"><path d="M74 168h172l64 132H10z"/></clipPath>
-    </defs>
-    <circle cx="160" cy="160" r="152" fill="url(#s1g)"/>
-    <path class="s1-beam" d="M18 0l54 0 80 210H-10z" fill="url(#s1beam)"/>
-    <path class="s1-beam b2" d="M248 0l54 0 28 210H168z" fill="url(#s1beam)"/>
-    <!-- pitch in perspective -->
-    <g clip-path="url(#s1pc)">
-      <path d="M74 168h172l64 132H10z" fill="url(#s1p)"/>
-      <path d="M86 194h148l9 18H77zM68 230h184l12 26H56z" fill="#fff" fill-opacity=".035"/>
-      <path d="M160 168v132M112 168l-34 132M208 168l34 132" stroke="#fff" stroke-opacity=".08" stroke-width="1.5"/>
-      <path d="M118 168l-6 22h96l-6-22" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.6"/>
-      <ellipse cx="160" cy="262" rx="46" ry="12" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.6"/>
-    </g>
-    <!-- goal -->
-    <g class="s1-net">
-      <path d="M130 142h60v28h-60z" fill="#fff" fill-opacity=".04"/>
-      <path d="M135 142v28M140 142v28M145 142v28M150 142v28M155 142v28M160 142v28M165 142v28M170 142v28M175 142v28M180 142v28M185 142v28M130 147h60M130 152h60M130 157h60M130 162h60M130 167h60" stroke="#fff" stroke-opacity=".22" stroke-width=".8"/>
-    </g>
-    <path d="M128 172v-32h64v32" fill="none" stroke="#F3F5F7" stroke-width="3.2" stroke-linejoin="round"/>
-    <circle class="s1-flash" cx="160" cy="156" r="46" fill="url(#s1flash)"/>
-    <!-- shot trail + ball -->
-    <path class="s1-trail" d="M112 284Q124 214 166 158" fill="none" stroke="#1A5CFF" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="160" stroke-dashoffset="160"/>
-    <g class="s1-ball"><g class="s1-spin">
-      <circle r="13" fill="#F3F5F7"/><path d="M0-6.2l5.9 4.3-2.3 6.9h-7.2l-2.3-6.9z" fill="#FFFFFF"/>
-      <path d="M0-13v6.8M12.4-4l-6.5 2.1M7.6 10.5L3.6 5M-7.6 10.5l4-5.5M-12.4-4l6.5 2.1" stroke="#FFFFFF" stroke-width="1.4"/>
-    </g></g>
-    <!-- confetti -->
-    <g class="s1-conf">
-      <rect style="--dx:-62px;--dy:-48px;--r:220deg" x="157" y="152" width="6" height="9" rx="1.5" fill="#1A5CFF"/>
-      <rect style="--dx:58px;--dy:-52px;--r:-200deg" x="157" y="152" width="6" height="9" rx="1.5" fill="#FFD23F"/>
-      <rect style="--dx:-86px;--dy:-8px;--r:160deg" x="157" y="152" width="5" height="8" rx="1.5" fill="#F3F5F7"/>
-      <rect style="--dx:84px;--dy:-14px;--r:-150deg" x="157" y="152" width="5" height="8" rx="1.5" fill="#4D9BFF"/>
-      <rect style="--dx:-30px;--dy:-76px;--r:260deg" x="157" y="152" width="5" height="8" rx="1.5" fill="#FF8A3D"/>
-      <rect style="--dx:30px;--dy:-80px;--r:-240deg" x="157" y="152" width="6" height="9" rx="1.5" fill="#1A5CFF"/>
-      <rect style="--dx:-70px;--dy:24px;--r:120deg" x="157" y="152" width="5" height="8" rx="1.5" fill="#FFD23F"/>
-      <rect style="--dx:72px;--dy:20px;--r:-120deg" x="157" y="152" width="5" height="8" rx="1.5" fill="#F3F5F7"/>
-      <circle style="--dx:-46px;--dy:-64px;--r:0deg" cx="160" cy="156" r="3" fill="#FFD23F"/>
-      <circle style="--dx:48px;--dy:-30px;--r:0deg" cx="160" cy="156" r="3" fill="#1A5CFF"/>
-    </g>
-    <!-- scoreboard -->
-    <g class="s1-board">
-      <rect x="40" y="26" width="240" height="96" rx="22" fill="#FFFFFF"/>
-      <rect class="s1-board-glow" x="40" y="26" width="240" height="96" rx="22" fill="none" stroke="#1A5CFF" stroke-width="2"/>
-      <circle cx="82" cy="66" r="20" fill="#E8EEF6"/><path d="M73 57h18v8c0 7-4 12-9 14-5-2-9-7-9-14z" fill="#4D9BFF"/>
-      <circle cx="238" cy="66" r="20" fill="#E8EEF6"/><path d="M229 57h18v8c0 7-4 12-9 14-5-2-9-7-9-14z" fill="#FF8A3D"/>
-      <g clip-path="url(#s1clip)" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="42" fill="#1A5CFF" text-anchor="middle">
-        <text class="s1-h1" x="134" y="81">1</text><text class="s1-h2" x="134" y="81">2</text>
-        <text x="160" y="79" fill="#9AA7BA" font-size="30">–</text><text x="186" y="81">1</text>
-      </g>
-      <rect x="132" y="94" width="56" height="18" rx="9" fill="#1A5CFF" fill-opacity=".14"/>
-      <circle class="s1-dot" cx="144" cy="103" r="3.5" fill="#1A5CFF"/>
-      <text x="166" y="107.5" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="11" fill="#1A5CFF">78'</text>
-    </g>
-    <g class="s1-goal">
-      <rect x="206" y="6" width="96" height="34" rx="17" fill="#1A5CFF"/>
-      <text x="254" y="29" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="20" letter-spacing="1.5" fill="#FFFFFF">GOAL!</text>
-    </g>
-  </svg>`,
-
-  centre: `<svg viewBox="0 0 320 320" role="img" aria-label="Animated match centre with formation and statistics">
-    <defs>
-      <radialGradient id="s2g" cx="45%" cy="50%" r="62%"><stop offset="0" stop-color="#4D9BFF" stop-opacity=".24"/><stop offset="1" stop-color="#4D9BFF" stop-opacity="0"/></radialGradient>
-      <linearGradient id="s2p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#154A2C"/><stop offset="1" stop-color="#0F361F"/></linearGradient>
-    </defs>
-    <circle cx="150" cy="160" r="152" fill="url(#s2g)"/>
-    <g class="s2-pitch">
-      <rect x="26" y="40" width="160" height="246" rx="18" fill="url(#s2p)" stroke="#0B1B33" stroke-opacity=".1" stroke-width="2"/>
-      <path d="M38 52h136v222H38zM38 163h136M80 52v26h52V52M80 274v-26h52v26" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.6"/>
-      <circle cx="106" cy="163" r="20" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1.6"/>
-      <!-- passing move -->
-      <g fill="none" stroke="#1A5CFF" stroke-width="2.2" stroke-linecap="round">
-        <path class="s2-pass p1" d="M106 258L124 226" stroke-dasharray="40"/>
-        <path class="s2-pass p2" d="M124 226L146 182" stroke-dasharray="52"/>
-        <path class="s2-pass p3" d="M146 182L106 120" stroke-dasharray="76"/>
-        <path class="s2-pass p4" d="M106 120L106 60" stroke-dasharray="62"/>
-      </g>
-      <g fill="none" stroke="#1A5CFF" stroke-width="2">
-        <circle class="s2-ring r1" cx="124" cy="226" r="10"/><circle class="s2-ring r2" cx="146" cy="182" r="10"/>
-        <circle class="s2-ring r3" cx="106" cy="120" r="10"/><circle class="s2-ring r4" cx="106" cy="62" r="10"/>
-      </g>
-      <g fill="#F3F5F7">
-        <circle class="s2-pl" style="--d:.30s" cx="106" cy="258" r="7.5" fill="#FFD23F"/>
-        <circle class="s2-pl" style="--d:.38s" cx="52" cy="226" r="7.5"/><circle class="s2-pl" style="--d:.42s" cx="88" cy="230" r="7.5"/>
-        <circle class="s2-pl" style="--d:.46s" cx="124" cy="226" r="7.5"/><circle class="s2-pl" style="--d:.50s" cx="160" cy="226" r="7.5"/>
-        <circle class="s2-pl" style="--d:.56s" cx="66" cy="182" r="7.5"/><circle class="s2-pl" style="--d:.60s" cx="106" cy="190" r="7.5"/>
-        <circle class="s2-pl" style="--d:.64s" cx="146" cy="182" r="7.5"/>
-        <circle class="s2-pl" style="--d:.70s" cx="58" cy="126" r="7.5"/><circle class="s2-pl" style="--d:.74s" cx="106" cy="120" r="7.5"/>
-        <circle class="s2-pl" style="--d:.78s" cx="154" cy="126" r="7.5"/>
-      </g>
-      <rect x="40" y="18" width="62" height="22" rx="11" fill="#FFFFFF" stroke="#1A5CFF" stroke-opacity=".4"/>
-      <circle class="s1-dot" cx="54" cy="29" r="3.5" fill="#1A5CFF"/>
-      <text x="76" y="33.5" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="11" fill="#1A5CFF">LIVE</text>
-    </g>
-    <g class="s2-stats">
-      <rect x="148" y="92" width="150" height="166" rx="18" fill="#FFFFFF" stroke="#0B1B33" stroke-opacity=".1" stroke-width="2"/>
-      <g font-family="system-ui, sans-serif" font-weight="800" font-size="10" letter-spacing=".6" fill="#6B7A90">
-        <text x="164" y="120">POSSESSION</text><text x="164" y="166">SHOTS</text><text x="164" y="212">xG</text>
-      </g>
-      <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#0B1B33" text-anchor="end">
-        <text class="s2-val" style="--d:1.0s" x="282" y="121">62%</text><text class="s2-val" style="--d:1.2s" x="282" y="167">14</text><text class="s2-val" style="--d:1.4s" x="282" y="213">1.84</text>
-      </g>
-      <rect x="164" y="130" width="118" height="8" rx="4" fill="#E6ECF4"/><rect class="s2-bar" style="--d:.9s" x="164" y="130" width="73" height="8" rx="4" fill="#1A5CFF"/>
-      <rect x="164" y="176" width="118" height="8" rx="4" fill="#E6ECF4"/><rect class="s2-bar" style="--d:1.1s" x="164" y="176" width="84" height="8" rx="4" fill="#1A5CFF"/>
-      <rect x="164" y="222" width="118" height="8" rx="4" fill="#E6ECF4"/><rect class="s2-bar" style="--d:1.3s" x="164" y="222" width="62" height="8" rx="4" fill="#F3F5F7"/>
-    </g>
-    <g class="s2-cards">
-      <rect class="s2-card c1" x="238" y="36" width="24" height="33" rx="3.5" fill="#FFD23F"/>
-      <rect class="s2-card c2" x="264" y="44" width="24" height="33" rx="3.5" fill="#FF4D5E"/>
-    </g>
-  </svg>`,
-
-  leagues: `<svg viewBox="0 0 320 320" role="img" aria-label="Animated globe with football leagues around the world">
-    <defs>
-      <radialGradient id="s4g" cx="50%" cy="48%" r="62%"><stop offset="0" stop-color="#2CC8C8" stop-opacity=".22"/><stop offset="1" stop-color="#2CC8C8" stop-opacity="0"/></radialGradient>
-      <radialGradient id="s4o" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#5B8CFF"/><stop offset=".6" stop-color="#1A5CFF"/><stop offset="1" stop-color="#0E3FB8"/></radialGradient>
-      <linearGradient id="s4shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-      <clipPath id="s4clip"><circle cx="160" cy="160" r="88"/></clipPath>
-    </defs>
-    <circle cx="160" cy="160" r="152" fill="url(#s4g)"/>
-    <g class="s4-orbit"><ellipse cx="160" cy="160" rx="132" ry="44" fill="none" stroke="#1A5CFF" stroke-opacity=".28" stroke-width="1.5" stroke-dasharray="4 7" transform="rotate(-18 160 160)"/></g>
-    <g class="s4-globe">
-      <circle cx="160" cy="160" r="88" fill="url(#s4o)" stroke="#1A5CFF" stroke-opacity=".55" stroke-width="2"/>
-      <g clip-path="url(#s4clip)" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="1.2">
-        <ellipse cx="160" cy="160" rx="88" ry="30"/><ellipse cx="160" cy="160" rx="88" ry="62"/><path d="M72 160h176"/>
-        <g class="s4-mer"><ellipse cx="160" cy="160" rx="30" ry="88"/><ellipse cx="160" cy="160" rx="62" ry="88"/><path d="M160 72v176"/>
-          <ellipse cx="336" cy="160" rx="30" ry="88"/><ellipse cx="336" cy="160" rx="62" ry="88"/><path d="M336 72v176"/></g>
-        <!-- land shapes (abstract) -->
-        <g fill="#FFFFFF" fill-opacity=".35" stroke="none">
-          <path d="M120 106c10-8 26-8 32 0 4 6-2 12-10 12-6 0-8 6-14 6-8 0-14-10-8-18z"/>
-          <path d="M146 134c10-2 22 2 24 12 2 12-6 28-14 38-6 8-14 4-14-6 0-10-8-14-6-26 1-8 4-16 10-18z"/>
-          <path d="M178 116c10-2 22 2 26 10 2 8-6 12-14 12s-16-2-18-10c-1-6 1-11 6-12z"/>
-          <path d="M92 150c8-4 18 0 20 8 2 10-4 24-10 30-6-2-10-12-12-22-1-8-2-14 2-16z"/>
-        </g>
-      </g>
-      <rect class="s4-shine" x="40" y="60" width="70" height="200" fill="url(#s4shine)" clip-path="url(#s4clip)"/>
-    </g>
-    <!-- pins -->
-    <g class="s4-pin" style="--d:.5s"><circle class="s4-ring" cx="134" cy="112" r="6" fill="none" stroke="#4D9BFF" stroke-width="2"/><path d="M134 112c-5-6-8-9-8-13a8 8 0 0116 0c0 4-3 7-8 13z" fill="#4D9BFF"/><circle cx="134" cy="99" r="3" fill="#0A0C0E"/></g>
-    <g class="s4-pin" style="--d:.75s"><circle class="s4-ring" cx="192" cy="128" r="6" fill="none" stroke="#1A5CFF" stroke-width="2"/><path d="M192 128c-5-6-8-9-8-13a8 8 0 0116 0c0 4-3 7-8 13z" fill="#1A5CFF"/><circle cx="192" cy="115" r="3" fill="#0A0C0E"/></g>
-    <g class="s4-pin" style="--d:1s"><circle class="s4-ring" cx="156" cy="160" r="6" fill="none" stroke="#FFD23F" stroke-width="2"/><path d="M156 160c-5-6-8-9-8-13a8 8 0 0116 0c0 4-3 7-8 13z" fill="#FFD23F"/><circle cx="156" cy="147" r="3" fill="#0A0C0E"/></g>
-    <g class="s4-pin" style="--d:1.25s"><circle class="s4-ring" cx="104" cy="176" r="6" fill="none" stroke="#FF8A3D" stroke-width="2"/><path d="M104 176c-5-6-8-9-8-13a8 8 0 0116 0c0 4-3 7-8 13z" fill="#FF8A3D"/><circle cx="104" cy="163" r="3" fill="#0A0C0E"/></g>
-    <!-- league chips -->
-    <g font-family="system-ui, sans-serif" font-weight="800" font-size="11">
-      <g class="s4-chip" style="--d:.6s"><rect x="10" y="44" width="116" height="26" rx="13" fill="#FFFFFF" stroke="#4D9BFF" stroke-opacity=".6"/><circle cx="25" cy="57" r="4" fill="#4D9BFF"/><text x="34" y="61" fill="#0B1B33">Premier League</text></g>
-      <g class="s4-chip" style="--d:.85s"><rect x="180" y="58" width="132" height="26" rx="13" fill="#FFFFFF" stroke="#1A5CFF" stroke-opacity=".6"/><circle cx="195" cy="71" r="4" fill="#1A5CFF"/><text x="204" y="75" fill="#0B1B33">Saudi Pro League</text></g>
-      <g class="s4-chip" style="--d:1.1s"><rect x="214" y="234" width="88" height="26" rx="13" fill="#FFFFFF" stroke="#FFD23F" stroke-opacity=".6"/><circle cx="229" cy="247" r="4" fill="#FFD23F"/><text x="238" y="251" fill="#0B1B33">NPFL</text></g>
-      <g class="s4-chip" style="--d:1.35s"><rect x="8" y="246" width="140" height="26" rx="13" fill="#FFFFFF" stroke="#FF8A3D" stroke-opacity=".6"/><circle cx="23" cy="259" r="4" fill="#FF8A3D"/><text x="32" y="263" fill="#0B1B33">Champions League</text></g>
-    </g>
-  </svg>`,
-
-  tables: `<svg viewBox="0 0 320 320" role="img" aria-label="Animated league table with your club climbing to first place">
-    <defs>
-      <radialGradient id="s5g" cx="50%" cy="45%" r="62%"><stop offset="0" stop-color="#1A5CFF" stop-opacity=".2"/><stop offset="1" stop-color="#1A5CFF" stop-opacity="0"/></radialGradient>
-      <linearGradient id="s5cup" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE27A"/><stop offset="1" stop-color="#E9A800"/></linearGradient>
-      <clipPath id="s5clip"><rect x="34" y="96" width="252" height="176" rx="4"/></clipPath>
-    </defs>
-    <circle cx="160" cy="165" r="150" fill="url(#s5g)"/>
-    <g class="s5-card">
-      <rect x="26" y="58" width="268" height="226" rx="20" fill="#FFFFFF" stroke="#0B1B33" stroke-opacity=".1" stroke-width="2"/>
-      <g font-family="system-ui, sans-serif" font-weight="800" font-size="10" letter-spacing=".8" fill="#9AA7BA">
-        <text x="44" y="84">#</text><text x="66" y="84">CLUB</text><text x="222" y="84" text-anchor="middle">P</text><text x="268" y="84" text-anchor="end">PTS</text>
-      </g>
-      <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#6B7A90">
-        <text x="47" y="120" text-anchor="middle" fill="#0B1B33">1</text><text x="47" y="155" text-anchor="middle">2</text><text x="47" y="190" text-anchor="middle">3</text><text x="47" y="225" text-anchor="middle">4</text><text x="47" y="260" text-anchor="middle">5</text>
-      </g>
-      <rect x="30" y="100" width="3" height="28" rx="1.5" fill="#4D9BFF"/><rect x="30" y="135" width="3" height="28" rx="1.5" fill="#4D9BFF"/><rect x="30" y="240" width="3" height="28" rx="1.5" fill="#FF4D5E"/>
-      <g clip-path="url(#s5clip)">
-        <g class="s5-row ra" style="--d:.25s"><rect x="58" y="101" width="226" height="28" rx="8" fill="#F1F5FB"/><circle cx="76" cy="115" r="8" fill="#4D9BFF"/><rect x="92" y="111" width="74" height="8" rx="4" fill="#B8C4D6"/><text x="222" y="120" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#6B7A90">8</text><text x="268" y="121" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#0B1B33">18</text></g>
-        <g class="s5-row rb" style="--d:.35s"><rect x="58" y="136" width="226" height="28" rx="8" fill="#F1F5FB"/><circle cx="76" cy="150" r="8" fill="#FF8A3D"/><rect x="92" y="146" width="60" height="8" rx="4" fill="#B8C4D6"/><text x="222" y="155" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#6B7A90">8</text><text x="268" y="156" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#0B1B33">17</text></g>
-        <g class="s5-row rd" style="--d:.55s"><rect x="58" y="206" width="226" height="28" rx="8" fill="#F1F5FB"/><circle cx="76" cy="220" r="8" fill="#2CC8C8"/><rect x="92" y="216" width="68" height="8" rx="4" fill="#B8C4D6"/><text x="222" y="225" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#6B7A90">8</text><text x="268" y="226" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#0B1B33">14</text></g>
-        <g class="s5-row re" style="--d:.65s"><rect x="58" y="241" width="226" height="28" rx="8" fill="#F1F5FB"/><circle cx="76" cy="255" r="8" fill="#9AA3AD"/><rect x="92" y="251" width="54" height="8" rx="4" fill="#B8C4D6"/><text x="222" y="260" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#6B7A90">8</text><text x="268" y="261" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#0B1B33">11</text></g>
-        <g class="s5-row rc" style="--d:.45s"><g class="s5-you">
-          <rect x="58" y="171" width="226" height="28" rx="8" fill="#E8F0FF" stroke="#1A5CFF" stroke-width="1.6"/>
-          <path d="M76 178l2.2 4.4 4.9.7-3.5 3.4.8 4.9-4.4-2.3-4.4 2.3.8-4.9-3.5-3.4 4.9-.7z" fill="#FFD23F"/>
-          <text x="92" y="189.5" font-family="system-ui, sans-serif" font-weight="800" font-size="12" fill="#0B1B33">Your club</text>
-          <text x="222" y="190" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="12" fill="#6B7A90">8</text>
-          <text class="s5-p1" x="268" y="191" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#1A5CFF">16</text>
-          <text class="s5-p2" x="268" y="191" text-anchor="end" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="17" fill="#1A5CFF">19</text>
-        </g></g>
-      </g>
-    </g>
-    <g class="s5-plus"><rect x="236" y="30" width="54" height="26" rx="13" fill="#1A5CFF"/><text x="263" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="13" fill="#FFFFFF">+3 pts</text></g>
-    <g class="s5-cup">
-      <path d="M44 14h28v12a14 14 0 01-28 0z" fill="url(#s5cup)"/><path d="M44 18h-6a6 6 0 006 9M72 18h6a6 6 0 01-6 9" fill="none" stroke="#E9A800" stroke-width="2.5"/>
-      <rect x="55" y="40" width="6" height="7" fill="#E9A800"/><rect x="48" y="47" width="20" height="5" rx="1.5" fill="#E9A800"/>
-    </g>
-  </svg>`,
-
-  follow: `<svg viewBox="0 0 320 320" role="img" aria-label="Animated followed clubs and goal notification">
-    <defs>
-      <radialGradient id="s3g" cx="50%" cy="40%" r="62%"><stop offset="0" stop-color="#FFD23F" stop-opacity=".22"/><stop offset="1" stop-color="#FFD23F" stop-opacity="0"/></radialGradient>
-      <linearGradient id="s3sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF3FA"/></linearGradient>
-    </defs>
-    <circle cx="160" cy="156" r="146" fill="url(#s3g)"/>
-    <g class="s3-rays" stroke="#FFD23F" stroke-width="3" stroke-linecap="round">
-      <path d="M160 20v-12M160 196v12M72 108h-12M248 108h12M98 46l-8-8M222 46l8-8M98 170l-8 8M222 170l8 8"/>
-    </g>
-    <g class="s3-side l"><path d="M70 136l30 11v30c0 25-15 41-30 49-15-8-30-24-30-49v-30z" fill="url(#s3sh)" stroke="#4D9BFF" stroke-width="3"/><path d="M57 162h26M57 175h26" stroke="#4D9BFF" stroke-width="5" stroke-linecap="round"/></g>
-    <g class="s3-side r"><path d="M250 136l30 11v30c0 25-15 41-30 49-15-8-30-24-30-49v-30z" fill="url(#s3sh)" stroke="#FF8A3D" stroke-width="3"/><circle cx="250" cy="170" r="11" fill="none" stroke="#FF8A3D" stroke-width="5"/></g>
-    <g class="s3-main">
-      <path d="M160 46l42 16v42c0 35-21 58-42 70-21-12-42-35-42-70V62z" fill="url(#s3sh)" stroke="#1A5CFF" stroke-width="3.2"/>
-      <path class="s3-star" d="M160 76l9.4 19 21 3-15.2 14.8 3.6 20.9L160 123.8l-18.8 9.9 3.6-20.9L129.6 98l21-3z" fill="#FFD23F"/>
-    </g>
-    <g class="s3-chip">
-      <rect x="116" y="182" width="88" height="26" rx="13" fill="#1A5CFF"/>
-      <path d="M128 195l4 4 7-8" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="172" y="199.5" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="11.5" fill="#FFFFFF">Following</text>
-    </g>
-    <g class="s3-spark" fill="#9DB7F0">
-      <path class="k1" d="M44 70l2.5 6.5L53 79l-6.5 2.5L44 88l-2.5-6.5L35 79l6.5-2.5z"/>
-      <path class="k2" d="M276 64l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/>
-      <path class="k3" d="M286 214l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#FFD23F"/>
-      <path class="k4" d="M34 230l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#1A5CFF"/>
-    </g>
-    <g class="s3-note">
-      <rect x="40" y="234" width="240" height="58" rx="18" fill="#FFFFFF" stroke="#0B1B33" stroke-opacity=".1" stroke-width="2"/>
-      <circle cx="70" cy="263" r="15" fill="#1A5CFF" fill-opacity=".16"/>
-      <g class="s3-bell"><path d="M64 268v-5a6 6 0 0112 0v5l2.5 3h-17z" fill="none" stroke="#1A5CFF" stroke-width="2.2" stroke-linejoin="round"/><path d="M68 274a2.5 2.5 0 004 0" stroke="#1A5CFF" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
-      <text x="94" y="259" font-family="system-ui, sans-serif" font-weight="800" font-size="12.5" fill="#0B1B33">GOAL! Your team scores</text>
-      <text x="94" y="276" font-family="system-ui, sans-serif" font-weight="600" font-size="11.5" fill="#6B7A90">78' · 2–1 · tap to open</text>
-    </g>
-  </svg>`,
-};
 const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" opacity=".35"/><path d="M8 12.5l2.6 2.5L16 9.5"/></svg>';
 
 function showOnboarding(force) {
   if (!force && store.get('onboarded', false)) return;
   if (document.querySelector('.onb')) return;
-  const slides = [
-    { art: ART.live, title: 'Live scores, <em>every second</em>', text: 'Goals, cards and full-time results the moment they happen.' },
-    { art: ART.centre, title: 'A match centre <em>for every game</em>', text: 'Line-ups, events, statistics and head-to-head, wherever the data is available.' },
-    { art: ART.leagues, title: 'Every big league, <em>one app</em>', text: 'Premier League to Champions League, plus the Saudi Pro League and Nigerian football.' },
-    { art: ART.tables, title: 'Tables and stats <em>at a glance</em>', text: 'League tables, top scorers and form — always up to date.' },
-    { art: ART.follow, title: 'Your clubs, <em>first</em>', text: 'Follow teams and competitions and their matches go straight to the top of your feed.' },
-  ];
   const SCENE_MS = 6500;
   const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const total = slides.length + 1; // + sign-in page
-  let i = 0, timerId = null;
+  const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const ico = {
+    clock: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>',
+    people: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20c.6-3.4 2.8-5.5 5.5-5.5s4.9 2.1 5.5 5.5M14 15.2c.9-.5 1.9-.7 3-.7 2.3 0 4 1.8 4.5 4.5"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+    doc: '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg>',
+    bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+    lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',
+    heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>',
+  };
+  // Generic competition marks (no official logos)
+  const markLeague = (c) => `<svg viewBox="0 0 32 32"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z" fill="${c}"/><path d="M16 9l2 4.2 4.6.6-3.4 3.2.9 4.6L16 19.4l-4.1 2.2.9-4.6-3.4-3.2 4.6-.6z" fill="#fff"/></svg>`;
+  const markCup = (c) => `<svg viewBox="0 0 32 32"><path d="M10 5h12v6a6 6 0 01-12 0z" fill="${c}"/><path d="M10 7H6a4 4 0 004 6M22 7h4a4 4 0 01-4 6" fill="none" stroke="${c}" stroke-width="2.2"/><rect x="14" y="17" width="4" height="6" fill="${c}"/><rect x="10" y="23" width="12" height="4" rx="1.5" fill="${c}"/></svg>`;
+  const markStar = (c) => `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="${c}"/><g fill="#fff"><path d="M16 9.5l1.4 2.9 3.2.5-2.3 2.2.5 3.2-2.8-1.5-2.8 1.5.5-3.2-2.3-2.2 3.2-.5z"/></g><circle cx="16" cy="16" r="12" fill="none" stroke="#fff" stroke-opacity=".5" stroke-dasharray="2 3"/></svg>`;
+  const leagues = [
+    ['Premier League', 'England', markLeague('#7B4DFF')], ['Champions League', 'Europe', markStar('#2F6BFF')], ['La Liga', 'Spain', markLeague('#FF5A5F')],
+    ['Serie A', 'Italy', markLeague('#2E9BFF')], ['Bundesliga', 'Germany', markLeague('#E5354A')], ['Ligue 1', 'France', markLeague('#4C6BFF')],
+    ['Saudi Pro League', 'Saudi Arabia', markLeague('#16A34A'), true], ['NPFL', 'Nigeria', markLeague('#22C55E'), true], ['Eredivisie', 'Netherlands', markLeague('#FF8A3D')],
+    ['Primeira Liga', 'Portugal', markLeague('#10B981')], ['Brasileirão', 'Brazil', markLeague('#F5B800')], ['World Cup', 'FIFA', markCup('#F5B800')],
+  ];
+  const crestDot = (bg, t) => `<i style="background:${bg}">${t}</i>`;
+  const PHONE_LIVE = `<div class="ob-phone"><div class="ob-screen">
+      <div class="ms-status"><span>9:41</span><span>●●● 4G</span></div>
+      <div class="ms-bar">${MARK_SVG}SPL</div>
+      <div class="ms-tabs"><span class="on">Live</span><span>Fixtures</span><span>Results</span></div>
+      <div class="ms-h"><b><span class="pulse" style="width:5px;height:5px;margin:0"></span>Live now</b><span>All ›</span></div>
+      <div class="ms-card">
+        <div class="ms-row" id="obRow1"><div class="ms-t">${crestDot('#16A34A', 'RS')}<span>Riyadh</span></div><div class="ms-s"><span id="obSc">1 - 1</span><small id="obMin">77'</small></div><div class="ms-t r">${crestDot('#0EA5A4', 'JU')}<span>Jeddah</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#22C55E', 'LC')}<span>Lagos</span></div><div class="ms-s">0 - 0<small>56'</small></div><div class="ms-t r">${crestDot('#E5354A', 'KR')}<span>Kano</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#7B4DFF', 'NA')}<span>Northam</span></div><div class="ms-s">1 - 1<small class="ht">HT</small></div><div class="ms-t r">${crestDot('#2E9BFF', 'HU')}<span>Harbour</span></div></div>
+      </div>
+      <div class="ms-h"><span>Starting soon</span></div>
+      <div class="ms-card">
+        <div class="ms-row"><div class="ms-t">${crestDot('#F2711C', 'DE')}<span>Desert</span></div><div class="ms-s up">20:00</div><div class="ms-t r">${crestDot('#1A5CFF', 'CF')}<span>Coastal</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#F5B800', 'AW')}<span>Abuja</span></div><div class="ms-s up">21:30</div><div class="ms-t r">${crestDot('#5B6B82', 'PS')}<span>Port City</span></div></div>
+      </div>
+      <div class="ms-h"><span>Finished</span></div>
+      <div class="ms-card">
+        <div class="ms-row"><div class="ms-t">${crestDot('#0EA5A4', 'MU')}<span>Medina</span></div><div class="ms-s">3 - 2<small class="ht">FT</small></div><div class="ms-t r">${crestDot('#E5354A', 'DH')}<span>Dammam</span></div></div>
+      </div>
+      <div class="ms-nav"><span class="on"><i></i>Home</span><span><i></i>Live</span><span><i></i>Leagues</span><span><i></i>Tables</span><span><i></i>Me</span></div>
+    </div></div>`;
+  const dots = [[50,88,'a'],[18,50],[38,62],[62,62],[82,50],[30,36],[50,40],[70,36],[25,16],[50,12],[75,16]];
+  const PHONE_MATCH = `<div class="ob-phone"><div class="ob-screen">
+      <div class="mc-hero"><div class="mc-comp">League · Matchday 8</div>
+        <div class="mc-board"><div class="tm"><i>RS</i>Riyadh Stars</div><div><div class="mc-score">2 – 1</div><span class="mc-min">● 78'</span></div><div class="tm"><i>JU</i>Jeddah Utd</div></div></div>
+      <div class="mc-tabs"><span>Summary</span><span class="on">Line-ups</span><span>Stats</span><span>H2H</span></div>
+      <div class="mc-pitch">${dots.map(([x, y, a], k) => `<b class="${a || ''}" style="left:${y}%;top:${x}%;animation-delay:${0.6 + k * 0.05}s"></b>`).join('')}</div>
+      <div class="mc-ev" style="animation-delay:1.1s"><em>12'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Riyadh Stars · assist</small></span></div>
+      <div class="mc-ev" style="animation-delay:1.25s"><em>28'</em><svg class="ic" viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="15" rx="2" fill="#F5B800"/></svg><span>Yellow card<small>Jeddah United</small></span></div>
+      <div class="mc-ev" style="animation-delay:1.4s"><em>63'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Riyadh Stars · header</small></span></div>
+    </div></div>`;
+  const slides = [
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob1.webp)"></div><div class="ob-shade"></div>
+      <div class="ob-content bottom"><h2 class="ob-h">Football<br>Brings Us <em>Together</em></h2>
+      <p class="ob-p">Live scores, fixtures, tables and more — from Saudi and Nigerian football to the world’s biggest leagues.</p></div></section>`,
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob2.webp);opacity:.55"></div><div class="ob-shade soft"></div><div class="ob-glow"></div>
+      <div class="ob-content"><h2 class="ob-h">Live Scores<br>in <em>Real Time</em></h2>
+      <p class="ob-p">Instant updates with the match minute, half-time and penalties.</p>
+      <div style="display:flex;justify-content:center;margin-top:20px">${PHONE_LIVE}</div></div></section>`,
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob3.webp);opacity:.6"></div><div class="ob-shade soft"></div>
+      <div class="ob-content"><h2 class="ob-h">Top Leagues &amp;<br><em>Competitions</em></h2>
+      <p class="ob-p">From Europe’s biggest leagues to Saudi, Nigeria and world tournaments.</p>
+      <div class="ob-grid">${leagues.map(([n, c, m, star], k) => `<div class="ob-tile ${star ? 'hl' : ''}" style="animation-delay:${0.25 + k * 0.05}s">${m}<b>${n}</b><small>${c}</small></div>`).join('')}</div></div></section>`,
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob4.webp);opacity:.45"></div><div class="ob-shade soft"></div><div class="ob-glow" style="left:30%"></div>
+      <div class="ob-content"><h2 class="ob-h">Detailed<br><em>Match Centre</em></h2>
+      <p class="ob-p">Line-ups, goals, cards, stats and xG — plus full match facts for the biggest leagues.</p>
+      <div class="ob-split">${PHONE_MATCH}<div class="ob-feats">
+        <div class="ob-feat" style="animation-delay:.5s"><span class="fi">${ico.clock}</span><div><b>Live timeline</b><small>Goals, cards and subs</small></div></div>
+        <div class="ob-feat" style="animation-delay:.62s"><span class="fi">${ico.people}</span><div><b>Line-ups</b><small>Formations on the pitch</small></div></div>
+        <div class="ob-feat" style="animation-delay:.74s"><span class="fi">${ico.chart}</span><div><b>Stats</b><small>Possession, shots, xG</small></div></div>
+        <div class="ob-feat" style="animation-delay:.86s"><span class="fi">${ico.doc}</span><div><b>Match facts</b><small>Countdown, H2H &amp; more</small></div></div>
+      </div></div></div></section>`,
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob5.webp)"></div><div class="ob-shade"></div>
+      <div class="ob-content bottom"><h2 class="ob-h">Join the <em>Game</em></h2>
+      <p class="ob-p">Sign in with your Pi account to save your clubs and support SPL with Pi — optional.</p>
+      <div class="ob-card">
+        <button class="ob-signin" id="obSignin"><span class="pi">π</span><span>Sign in with Pi<small>Pi Mainnet</small></span></button>
+        <button class="ob-guest" id="onbGuest">Continue as guest</button>
+        <div class="ob-legal">By signing in you agree to the <a href="#/terms" data-legal>Terms of Use</a> and <a href="#/privacy" data-legal>Privacy Policy</a>.</div>
+        <div class="ob-msg" id="onbMsg"></div>
+      </div>
+      <div class="ob-perks"><span>${ico.bolt}Lightweight</span><span>${ico.lock}Private</span><span>${ico.heart}Free</span></div>
+      </div></section>`,
+  ];
+  const total = slides.length, scenes = total - 1;
+  let i = 0, timerId = null, scoreTimer = null;
   const o = document.createElement('div');
   o.className = 'onb'; o.setAttribute('role', 'dialog'); o.setAttribute('aria-label', 'Welcome to SPL');
   o.innerHTML = `
-    <div class="onb-top"><span class="onb-brand">${MARK_SVG}SPL</span><button class="onb-skip" id="onbSkip">Skip <span aria-hidden="true">›</span></button></div>
-    <div class="onb-bars" id="onbBars" style="--dur:${SCENE_MS}ms">${slides.map(() => '<i><b></b></i>').join('')}</div>
-    <div class="onb-track" id="onbTrack">
-      ${slides.map((sl) => `<section class="onb-slide"><div class="onb-art">${sl.art}</div><h2>${sl.title}</h2><p>${sl.text}</p></section>`).join('')}
-      <section class="onb-slide onb-login">
-        <div class="lg-mark">${MARK_SVG}</div>
-        <div class="lg-name">SPL</div>
-        <div class="lg-dom">spl.pi</div>
-        <p>Every Match. Every Moment. Every Goal.</p>
-        <div class="onb-perks">
-          <div>${CHECK}Save your favourite clubs and leagues</div>
-          <div>${CHECK}Pick up where you left off</div>
-          <div>${CHECK}Support SPL with Pi</div>
-        </div>
-      </section>
-    </div>
-    <div class="onb-foot">
-      <span class="onb-count" id="onbCount"></span>
-      <button class="btn" id="onbNext">Next</button>
-      <button class="onb-guest" id="onbGuest" hidden>Continue as guest</button>
-      <div class="onb-legal" id="onbLegal" hidden>By signing in you agree to the <a href="#/terms" data-legal>Terms of Use</a> and <a href="#/privacy" data-legal>Privacy Policy</a>.</div>
-      <div class="onb-msg" id="onbMsg"></div>
-      <div class="onb-domain">SPL · <b>spl.pi</b></div>
-    </div>`;
+    <div class="onb-top"><div class="onb-brand">${MARK_SVG}<div><b>SPL</b><small>Every Match. Every Moment. Every Goal.</small></div></div><button class="onb-skip" id="onbSkip">Skip</button></div>
+    <div class="onb-track" id="onbTrack">${slides.join('')}</div>
+    <div class="onb-foot" id="onbFoot"><div class="ob-dots" id="obDots" style="--dur:${SCENE_MS}ms">${Array.from({ length: scenes }, () => '<i></i>').join('')}</div>
+      <button class="ob-next" id="onbNext">Next ${ARROW}</button></div>`;
   document.body.appendChild(o);
+  if (CONFIG.PI_SANDBOX) { const sm = o.querySelector('.ob-signin small'); if (sm) sm.textContent = 'Pi Testnet'; }
+  // preload photos
+  ['ob1', 'ob2', 'ob3', 'ob4', 'ob5'].forEach((n) => { const im = new Image(); im.src = `/onboarding/${n}.webp`; });
   const track = o.querySelector('#onbTrack'), next = o.querySelector('#onbNext'), skip = o.querySelector('#onbSkip'),
-    guest = o.querySelector('#onbGuest'), msg = o.querySelector('#onbMsg'), bars = o.querySelector('#onbBars'),
-    barEls = [...bars.querySelectorAll('i')], count = o.querySelector('#onbCount');
-  const finish = () => { clearTimeout(timerId); store.set('onboarded', true); o.style.opacity = '0'; o.style.transition = 'opacity .25s'; setTimeout(() => o.remove(), 260); if (location.hash.startsWith('#/me')) viewMe(); };
+    foot = o.querySelector('#onbFoot'), dotsWrap = o.querySelector('#obDots'), dotEls = [...dotsWrap.querySelectorAll('i')],
+    signin = o.querySelector('#obSignin'), guest = o.querySelector('#onbGuest'), msg = o.querySelector('#onbMsg');
+  const finish = () => { clearTimeout(timerId); clearInterval(scoreTimer); store.set('onboarded', true); o.style.opacity = '0'; o.style.transition = 'opacity .3s'; setTimeout(() => o.remove(), 320); if (location.hash.startsWith('#/me')) viewMe(); };
+  function liveDemo(on) {
+    clearInterval(scoreTimer);
+    const sc = o.querySelector('#obSc'), mn = o.querySelector('#obMin'), row = o.querySelector('#obRow1');
+    if (!sc) return;
+    sc.textContent = '1 - 1'; mn.textContent = "77'";
+    if (!on) return;
+    let t = 0;
+    scoreTimer = setInterval(() => {
+      t++;
+      if (t === 2) { sc.textContent = '2 - 1'; row.classList.remove('ms-flash'); void row.offsetWidth; row.classList.add('ms-flash'); }
+      mn.textContent = (77 + t) + "'";
+      if (t >= 5) clearInterval(scoreTimer);
+    }, 1100);
+  }
   function go(n) {
     clearTimeout(timerId);
     i = Math.max(0, Math.min(total - 1, n));
     track.style.transform = `translateX(-${i * 100}%)`;
     o.querySelectorAll('.onb-slide').forEach((sl, k) => { sl.classList.remove('play'); if (k === i) { void sl.offsetWidth; sl.classList.add('play'); } });
-    barEls.forEach((el, k) => {
-      el.classList.remove('on', 'done');
-      if (k < i) el.classList.add('done');
-      if (k === i) { void el.offsetWidth; el.classList.add(reduced ? 'done' : 'on'); }
-    });
+    dotEls.forEach((el, k) => { el.classList.remove('on', 'done'); if (k < i) el.classList.add('done'); if (k === i) { void el.offsetWidth; el.classList.add(reduced ? 'done' : 'on'); } });
     const last = i === total - 1;
-    bars.classList.toggle('hide', last);
+    foot.classList.toggle('hide', last);
     skip.style.visibility = last ? 'hidden' : 'visible';
-    guest.hidden = !last;
-    o.querySelector('#onbLegal').hidden = !last;
-    count.textContent = last ? '' : `${i + 1} / ${slides.length}`;
-    count.style.display = last ? 'none' : '';
-    next.innerHTML = last ? '<span class="pi-glyph">π</span> Sign in with Pi' : (i === slides.length - 1 ? 'Get started <span class="arr">→</span>' : 'Next <span class="arr">→</span>');
+    next.innerHTML = (i === scenes - 1 ? 'Get started ' : 'Next ') + ARROW;
     msg.textContent = '';
-    // auto-play like a short video; stops at the sign-in page
+    liveDemo(i === 1 && !reduced);
     if (!last && !reduced) timerId = setTimeout(() => go(i + 1), SCENE_MS);
   }
-  // hold to pause (like stories)
-  const pause = () => { clearTimeout(timerId); bars.classList.add('paused'); };
+  const pause = () => { clearTimeout(timerId); dotsWrap.classList.add('paused'); };
   const resume = () => {
-    if (!bars.classList.contains('paused')) return;
-    bars.classList.remove('paused');
-    if (i < total - 1 && !reduced) {
-      const on = barEls[i] && barEls[i].querySelector('b');
-      const done = on ? on.getBoundingClientRect().width / Math.max(1, barEls[i].getBoundingClientRect().width) : 0;
-      timerId = setTimeout(() => go(i + 1), Math.max(300, SCENE_MS * (1 - done)));
-    }
+    if (!dotsWrap.classList.contains('paused')) return;
+    dotsWrap.classList.remove('paused');
+    if (i < total - 1 && !reduced) timerId = setTimeout(() => go(i + 1), SCENE_MS / 2);
   };
-  next.onclick = () => {
-    if (i < total - 1) return go(i + 1);
+  next.onclick = () => go(i + 1);
+  skip.onclick = () => go(total - 1);
+  signin.onclick = () => {
     if (!inPiBrowser()) { msg.textContent = 'Open SPL in the Pi Browser to sign in with Pi.'; return; }
-    next.disabled = true; next.textContent = 'Connecting to Pi…';
+    signin.disabled = true; signin.querySelector('span:last-child').firstChild.textContent = 'Connecting to Pi…';
     piLogin().then((ok) => {
-      next.disabled = false;
-      if (ok) finish();
-      else { go(i); msg.textContent = 'Sign-in was cancelled. Try again or continue as guest.'; }
+      signin.disabled = false; signin.querySelector('span:last-child').firstChild.textContent = 'Sign in with Pi';
+      if (ok) finish(); else msg.textContent = 'Sign-in was cancelled. Try again or continue as guest.';
     });
   };
-  skip.onclick = () => go(total - 1);   // Skip jumps straight to the sign-in page
   guest.onclick = finish;
-  o.querySelectorAll('[data-legal]').forEach((a) => a.addEventListener('click', () => { clearTimeout(timerId); o.remove(); }));
-  // swipe + hold
-  let x0 = null, t0 = 0;
-  track.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; t0 = Date.now(); pause(); }, { passive: true });
+  o.querySelectorAll('[data-legal]').forEach((a) => a.addEventListener('click', () => { clearTimeout(timerId); clearInterval(scoreTimer); o.remove(); }));
+  let x0 = null;
+  track.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; pause(); }, { passive: true });
   track.addEventListener('touchend', (e) => {
     const dx = x0 === null ? 0 : e.changedTouches[0].clientX - x0; x0 = null;
-    if (Math.abs(dx) > 50) { bars.classList.remove('paused'); go(i + (dx < 0 ? 1 : -1)); }
-    else resume();
+    if (Math.abs(dx) > 50) { dotsWrap.classList.remove('paused'); go(i + (dx < 0 ? 1 : -1)); } else resume();
   });
-  track.addEventListener('mousedown', pause);
-  track.addEventListener('mouseup', resume);
-  document.addEventListener('visibilitychange', function v() {
-    if (!document.body.contains(o)) return document.removeEventListener('visibilitychange', v);
-    if (document.hidden) pause(); else resume();
-  });
-  document.addEventListener('keydown', function k(e) {
-    if (!document.body.contains(o)) return document.removeEventListener('keydown', k);
-    if (e.key === 'ArrowRight') go(i + 1); if (e.key === 'ArrowLeft') go(i - 1);
-  });
+  document.addEventListener('visibilitychange', function v() { if (!document.body.contains(o)) return document.removeEventListener('visibilitychange', v); if (document.hidden) pause(); else resume(); });
+  document.addEventListener('keydown', function k(e) { if (!document.body.contains(o)) return document.removeEventListener('keydown', k); if (e.key === 'ArrowRight') go(i + 1); if (e.key === 'ArrowLeft') go(i - 1); });
   go(0);
 }
 
