@@ -61,7 +61,11 @@ Setup:
 1. develop.pi → your mainnet app → copy the **API Key** → Cloudflare → Settings → Environment variables →
    add **`PI_API_KEY`** as a Secret (Production) → redeploy.
 2. develop.pi → App URL = `https://spl-pi.pages.dev`.
-3. Validate domain: put Pi's `validation-key.txt` at the **top level** of the repo, push, then click Validate.
+3. Validate domain (either way works):
+   - **Easiest:** in Cloudflare add a variable **`PI_VALIDATION_KEY`** with the key from develop.pi → redeploy. SPL serves it at `/validation-key.txt`.
+   - Or put Pi's `validation-key.txt` at the **top level** of the repo and push.
+   Then click Validate in develop.pi.
+4. Open **`/launch-check`** on the live site: every row should be green before you submit the listing.
 4. Test in the Pi Browser: My Football → Sign in with Pi → Support SPL → 1 π.
 
 Logging: every login and payment step writes one line tagged `SPL-PI`
