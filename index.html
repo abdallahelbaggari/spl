@@ -437,6 +437,87 @@ footer.foot a{text-decoration:underline}
 .ob-next{height:52px;padding:0 30px;border-radius:26px;background:linear-gradient(90deg,#2F6BFF,#1A4FD9);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(26,92,255,.45)}
 .ob-next svg{width:18px;height:18px}
 @media (max-height:700px){.ob-phone{width:180px;height:368px}.ob-content{padding-top:84px}.ob-grid{gap:6px}.ob-tile{padding:9px 5px 8px}}
+
+/* restored: Pi card, payments, legal pages */
+.net-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:12px;background:rgba(26,92,255,.12);color:var(--green);font-size:11px;font-weight:800;letter-spacing:.04em;margin-bottom:10px}
+.pi-msg{display:block;margin-top:8px;font-size:12.5px;color:var(--muted);min-height:1em}
+.pay-card{margin:0 10px;padding:16px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.pay-card p{margin:0 0 14px;color:var(--muted);font-size:13.5px}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.amt{height:52px;border-radius:12px;background:var(--surface2);border:1px solid var(--line2);font-family:var(--display);font-weight:700;font-size:21px}
+.amt:active{background:var(--green);color:#FFFFFF}
+.pay-log{margin-top:14px;padding:10px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:12px;max-height:180px;overflow-y:auto}
+.pay-log .plog{display:flex;gap:8px;padding:3px 0;line-height:1.35}
+.pay-log time{color:var(--dim);font-variant-numeric:tabular-nums;flex:none}
+.pay-log .ok span{color:var(--green)} .pay-log .err span{color:var(--red)} .pay-log .warn span{color:var(--amber)}
+.pl-empty{color:var(--dim)}
+.legal{padding:18px 18px 0;max-width:680px}
+.legal h1{font-family:var(--display);font-size:32px;margin:6px 0 2px}
+.legal .upd{color:var(--dim);font-size:12.5px;margin:0 0 14px}
+.legal h3{font-size:15px;margin:22px 0 6px}
+.legal p,.legal li{color:#33435C;font-size:14px;line-height:1.6}
+.legal ul{padding-left:18px;margin:6px 0}
+.legal b{color:var(--text)}
+.legal .other a{color:var(--green);font-weight:700}
+.pi-glyph{font-family:var(--display);font-size:22px;line-height:1}
+.onb-legal{text-align:center;margin-top:10px;font-size:11.5px;color:var(--dim)}
+/* ===== Enhanced brand look ===== */
+:root{--green:#1652F0;--green-d:#0B3CC4;--line:rgba(11,27,51,.10);--line2:rgba(11,27,51,.16);--muted:#4E5D75}
+.top{background:linear-gradient(100deg,#1A5CFF 0%,#0E43D1 100%)!important;box-shadow:0 4px 14px rgba(14,67,209,.25)!important;border-bottom:0!important;color:#fff}
+.top .wordmark,.top .top-title,.top .icon-btn,.top .back{color:#fff!important}
+.top .dom-tag{color:#fff!important;border-color:rgba(255,255,255,.55)!important;background:rgba(255,255,255,.12)}
+.top .brand-mark{filter:drop-shadow(0 2px 6px rgba(0,0,0,.15))}
+.top .icon-btn:active,.top .back:active{background:rgba(255,255,255,.16)}
+.nav{box-shadow:0 -4px 16px rgba(11,27,51,.06)}
+.nav a{color:#7D8AA0}
+.nav a.on{color:#1652F0!important}
+.nav a.on svg{background:rgba(22,82,240,.12);border-radius:12px;padding:3px 16px;box-sizing:content-box;margin:-3px -16px}
+.nav a.on::before{display:none}
+.section-h h2{color:#0B1B33!important;font-size:16px!important}
+.group-h .t b{font-size:14.5px;font-weight:800}
+.row .sc{font-size:20px}
+.tm.win span{color:#0B1B33}
+.chip{border-color:rgba(11,27,51,.14)!important;color:#33435C!important;font-weight:700!important}
+.chip.on{color:#fff!important;box-shadow:0 4px 12px rgba(22,82,240,.3)}
+.date.on{box-shadow:0 6px 16px rgba(22,82,240,.35)}
+.btn{box-shadow:0 6px 16px rgba(22,82,240,.28)}
+.btn.ghost{box-shadow:none}
+.foot .copy{margin-top:8px;font-weight:800;color:#1652F0;letter-spacing:.02em}
+.splash .copy{position:absolute;bottom:calc(28px + env(safe-area-inset-bottom,0px));color:#8E9BB0;font-size:12px;letter-spacing:.08em;font-weight:700}
+
+/* onboarding white+blue */
+.ob-shade.blue{background:linear-gradient(180deg,rgba(14,52,170,.55) 0%,rgba(26,92,255,0) 24%,rgba(26,92,255,.18) 46%,rgba(22,82,240,.88) 68%,#1450E6 84%)}
+.ob-light{position:absolute;inset:0;background:radial-gradient(90% 55% at 50% 0%,#DCE7FF 0%,rgba(220,231,255,0) 70%),linear-gradient(180deg,#FFFFFF 0%,#F2F6FF 100%)}
+.ob-light::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-8%;height:38%;border-radius:50% 50% 0 0;border-top:2px solid rgba(22,82,240,.10);box-shadow:inset 0 2px 0 rgba(22,82,240,.04)}
+.onb-slide.lt{color:#0B1B33}
+.onb-slide.lt .ob-glow{background:radial-gradient(closest-side,rgba(22,82,240,.22),transparent)}
+.onb-slide.lt .ob-h{text-shadow:none;color:#0B1B33}
+.onb-slide.lt .ob-h em{background:linear-gradient(90deg,#1652F0,#3D7BFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.onb-slide.lt .ob-p{color:#4E5D75}
+.onb-slide.lt .ob-phone{box-shadow:0 0 0 1.5px rgba(11,27,51,.12),0 30px 60px rgba(14,52,170,.28),0 0 50px rgba(22,82,240,.18)}
+.onb-slide.lt .ob-tile{background:#fff;border:1px solid rgba(11,27,51,.08);box-shadow:0 2px 4px rgba(11,27,51,.04),0 8px 22px rgba(14,52,170,.10);backdrop-filter:none;-webkit-backdrop-filter:none}
+.onb-slide.lt .ob-tile b{color:#0B1B33}
+.onb-slide.lt .ob-tile small{color:#6B7A90}
+.onb-slide.lt .ob-tile.hl{background:linear-gradient(160deg,#1A5CFF,#0E43D1);border-color:transparent;box-shadow:0 10px 24px rgba(22,82,240,.35)}
+.onb-slide.lt .ob-tile.hl b,.onb-slide.lt .ob-tile.hl small{color:#fff}
+.onb-slide.lt .ob-feat b{color:#0B1B33}
+.onb-slide.lt .ob-feat small{color:#5B6B82}
+.onb-slide:not(.lt) .ob-h em{background:none;-webkit-text-fill-color:#fff;color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.55);text-underline-offset:6px;text-decoration-thickness:4px}
+.onb{background:#1450E6}
+.onb.light{background:#fff}
+.onb.light .onb-brand b{color:#0B1B33}
+.onb.light .onb-brand small{color:#5B6B82}
+.onb.light .onb-skip{color:#0B1B33;background:#fff;border-color:rgba(11,27,51,.14);box-shadow:0 2px 8px rgba(11,27,51,.06)}
+.onb.light .ob-dots i{background:rgba(11,27,51,.15)}
+.onb.light .ob-dots i.done,.onb.light .ob-dots i.on::after{background:#1652F0}
+.onb.light .ob-dots i.on{background:rgba(11,27,51,.15)}
+.onb:not(.light) .ob-next{background:#fff;color:#1652F0;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.onb:not(.light) .ob-dots i{background:rgba(255,255,255,.4)}
+.onb:not(.light) .ob-dots i.done,.onb:not(.light) .ob-dots i.on::after{background:#fff}
+.ob-signin{background:#fff!important;color:#1652F0!important;box-shadow:0 10px 28px rgba(0,0,0,.22)!important}
+.ob-signin .pi{background:#1652F0!important;border-color:#1652F0!important;color:#fff}
+.ob-card{background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.3)!important}
+.ob-copy{text-align:center;margin-top:10px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.85)}
 @media (prefers-reduced-motion:reduce){.onb-slide .ob-photo{animation:none!important;transform:none}}
 .onb-legal{text-align:center;margin-top:10px;font-size:11.5px;color:var(--dim)}
 .onb-legal a{color:var(--muted);text-decoration:underline}
@@ -481,13 +562,13 @@ footer.foot a{text-decoration:underline}
 </head>
 <body>
 
-<div class="splash" id="splash" aria-hidden="true"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1A5CFF"/><rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/><circle cx="32" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.2"/><path d="M8 32h48" stroke="#fff" stroke-width="3.2"/><circle cx="32" cy="32" r="3.6" fill="#fff"/></svg><div class="name">SPL</div><div class="tag">Every Match. Every Moment. Every Goal.</div><div class="dom">spl.pi</div></div>
+<div class="splash" id="splash" aria-hidden="true"><svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1A5CFF"/><rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/><circle cx="32" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.2"/><path d="M8 32h48" stroke="#fff" stroke-width="3.2"/><circle cx="32" cy="32" r="3.6" fill="#fff"/></svg><div class="name">SPL</div><div class="tag">Every Match. Every Moment. Every Goal.</div><div class="copy">© 2026 SPL · spl.pi</div></div>
 <header class="top" id="top">
   <button class="back" id="backBtn" aria-label="Back">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
   </button>
   <a class="brand" href="#/home" aria-label="SPL home">
-    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#1A5CFF"/><rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/><circle cx="32" cy="32" r="13" fill="none" stroke="#fff" stroke-width="3.2"/><path d="M8 32h48" stroke="#fff" stroke-width="3.2"/><circle cx="32" cy="32" r="3.6" fill="#fff"/></svg>
+    <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff"/><circle cx="32" cy="32" r="13" fill="none" stroke="#1A5CFF" stroke-width="3.6"/><path d="M8 32h48" stroke="#1A5CFF" stroke-width="3.6"/><circle cx="32" cy="32" r="4" fill="#1A5CFF"/></svg>
     <span class="wordmark">SPL</span><span class="dom-tag">spl.pi</span>
   </a>
   <span class="top-title" id="topTitle"></span>
@@ -1289,6 +1370,7 @@ function viewMe() {
       <div><span>Time zone</span><b>${esc(TZ)}</b></div>
       <div><span>Support</span><b><a href="mailto:support.spl.pi@gmail.com" style="color:var(--green)">support.spl.pi@gmail.com</a></b></div>
       <div><span>Website</span><b>spl.pi</b></div>
+      <div><span>Copyright</span><b>© ${new Date().getFullYear()} SPL</b></div>
       <div><span>Privacy Policy</span><b><a href="#/privacy" style="color:var(--green)">Read</a></b></div>
       <div><span>Terms of Use</span><b><a href="#/terms" style="color:var(--green)">Read</a></b></div>
       <div><span>Introduction</span><b><button id="replayOnb" style="color:var(--green);font-weight:600">View again</button></b></div>
@@ -1480,7 +1562,7 @@ async function runSearch() {
 
 /* ---------- footer ---------- */
 function footer() {
-  return `<footer class="foot">${PROVIDER?.attribution ? esc(PROVIDER.attribution) + '.<br>' : ''}Kick-off times shown in ${esc(TZ)}.<br>SPL · spl.pi — an independent app not affiliated with or endorsed by Pi Network, any league or any club.</footer>`;
+  return `<footer class="foot">${PROVIDER?.attribution ? esc(PROVIDER.attribution) + '.<br>' : ''}Kick-off times shown in ${esc(TZ)}.<br>An independent app not affiliated with or endorsed by Pi Network, any league or any club.<div class="copy">© ${new Date().getFullYear()} SPL · spl.pi</div></footer>`;
 }
 
 /* ---------- splash + first-run welcome ---------- */
@@ -1553,18 +1635,18 @@ function showOnboarding(force) {
       <div class="mc-ev" style="animation-delay:1.4s"><em>63'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Riyadh Stars · header</small></span></div>
     </div></div>`;
   const slides = [
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob1.webp)"></div><div class="ob-shade"></div>
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob1.webp)"></div><div class="ob-shade blue"></div>
       <div class="ob-content bottom"><h2 class="ob-h">Football<br>Brings Us <em>Together</em></h2>
       <p class="ob-p">Live scores, fixtures, tables and more — from Saudi and Nigerian football to the world’s biggest leagues.</p></div></section>`,
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob2.webp);opacity:.55"></div><div class="ob-shade soft"></div><div class="ob-glow"></div>
+    `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow"></div>
       <div class="ob-content"><h2 class="ob-h">Live Scores<br>in <em>Real Time</em></h2>
       <p class="ob-p">Instant updates with the match minute, half-time and penalties.</p>
       <div style="display:flex;justify-content:center;margin-top:20px">${PHONE_LIVE}</div></div></section>`,
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob3.webp);opacity:.6"></div><div class="ob-shade soft"></div>
+    `<section class="onb-slide lt"><div class="ob-light"></div>
       <div class="ob-content"><h2 class="ob-h">Top Leagues &amp;<br><em>Competitions</em></h2>
       <p class="ob-p">From Europe’s biggest leagues to Saudi, Nigeria and world tournaments.</p>
       <div class="ob-grid">${leagues.map(([n, c, m, star], k) => `<div class="ob-tile ${star ? 'hl' : ''}" style="animation-delay:${0.25 + k * 0.05}s">${m}<b>${n}</b><small>${c}</small></div>`).join('')}</div></div></section>`,
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob4.webp);opacity:.45"></div><div class="ob-shade soft"></div><div class="ob-glow" style="left:30%"></div>
+    `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow" style="left:30%"></div>
       <div class="ob-content"><h2 class="ob-h">Detailed<br><em>Match Centre</em></h2>
       <p class="ob-p">Line-ups, goals, cards, stats and xG — plus full match facts for the biggest leagues.</p>
       <div class="ob-split">${PHONE_MATCH}<div class="ob-feats">
@@ -1573,7 +1655,7 @@ function showOnboarding(force) {
         <div class="ob-feat" style="animation-delay:.74s"><span class="fi">${ico.chart}</span><div><b>Stats</b><small>Possession, shots, xG</small></div></div>
         <div class="ob-feat" style="animation-delay:.86s"><span class="fi">${ico.doc}</span><div><b>Match facts</b><small>Countdown, H2H &amp; more</small></div></div>
       </div></div></div></section>`,
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob5.webp)"></div><div class="ob-shade"></div>
+    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob5.webp)"></div><div class="ob-shade blue"></div>
       <div class="ob-content bottom"><h2 class="ob-h">Join the <em>Game</em></h2>
       <p class="ob-p">Sign in with your Pi account to save your clubs and support SPL with Pi — optional.</p>
       <div class="ob-card">
@@ -1583,6 +1665,7 @@ function showOnboarding(force) {
         <div class="ob-msg" id="onbMsg"></div>
       </div>
       <div class="ob-perks"><span>${ico.bolt}Lightweight</span><span>${ico.lock}Private</span><span>${ico.heart}Free</span></div>
+      <div class="ob-copy">© ${new Date().getFullYear()} SPL · spl.pi</div>
       </div></section>`,
   ];
   const total = slides.length, scenes = total - 1;
@@ -1597,7 +1680,7 @@ function showOnboarding(force) {
   document.body.appendChild(o);
   if (CONFIG.PI_SANDBOX) { const sm = o.querySelector('.ob-signin small'); if (sm) sm.textContent = 'Pi Testnet'; }
   // preload photos
-  ['ob1', 'ob2', 'ob3', 'ob4', 'ob5'].forEach((n) => { const im = new Image(); im.src = `/onboarding/${n}.webp`; });
+  ['ob1', 'ob5'].forEach((n) => { const im = new Image(); im.src = `/onboarding/${n}.webp`; });
   const track = o.querySelector('#onbTrack'), next = o.querySelector('#onbNext'), skip = o.querySelector('#onbSkip'),
     foot = o.querySelector('#onbFoot'), dotsWrap = o.querySelector('#obDots'), dotEls = [...dotsWrap.querySelectorAll('i')],
     signin = o.querySelector('#obSignin'), guest = o.querySelector('#onbGuest'), msg = o.querySelector('#onbMsg');
@@ -1624,6 +1707,7 @@ function showOnboarding(force) {
     dotEls.forEach((el, k) => { el.classList.remove('on', 'done'); if (k < i) el.classList.add('done'); if (k === i) { void el.offsetWidth; el.classList.add(reduced ? 'done' : 'on'); } });
     const last = i === total - 1;
     foot.classList.toggle('hide', last);
+    o.classList.toggle('light', o.querySelectorAll('.onb-slide')[i].classList.contains('lt'));
     skip.style.visibility = last ? 'hidden' : 'visible';
     next.innerHTML = (i === scenes - 1 ? 'Get started ' : 'Next ') + ARROW;
     msg.textContent = '';
