@@ -1537,7 +1537,7 @@ sRes.addEventListener('click', (e) => { if (e.target.closest('a')) closeSearch()
 sIn.addEventListener('input', () => { clearTimeout(sTimer); sTimer = setTimeout(runSearch, 350); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearch(); });
 function searchHint() {
-  sRes.innerHTML = `<div class="section-h"><h2>Popular</h2></div><div class="chips" style="flex-wrap:wrap">${['Arsenal', 'Real Madrid', 'Al Hilal', 'Enyimba', 'Premier League', 'Nigeria'].map((s) => `<button class="chip" data-s="${s}">${s}</button>`).join('')}</div>`;
+  sRes.innerHTML = `<div class="section-h"><h2>Popular</h2></div><div class="chips" style="flex-wrap:wrap">${['Arsenal', 'Real Madrid', 'Barcelona', 'Bayern', 'Premier League', 'Champions League'].map((s) => `<button class="chip" data-s="${s}">${s}</button>`).join('')}</div>`;
   sRes.querySelectorAll('[data-s]').forEach((b) => b.onclick = () => { sIn.value = b.dataset.s; runSearch(); });
 }
 async function runSearch() {
@@ -1604,9 +1604,9 @@ function showOnboarding(force) {
   const markCup = (c) => `<svg viewBox="0 0 32 32"><path d="M10 5h12v6a6 6 0 01-12 0z" fill="${c}"/><path d="M10 7H6a4 4 0 004 6M22 7h4a4 4 0 01-4 6" fill="none" stroke="${c}" stroke-width="2.2"/><rect x="14" y="17" width="4" height="6" fill="${c}"/><rect x="10" y="23" width="12" height="4" rx="1.5" fill="${c}"/></svg>`;
   const markStar = (c) => `<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="${c}"/><g fill="#fff"><path d="M16 9.5l1.4 2.9 3.2.5-2.3 2.2.5 3.2-2.8-1.5-2.8 1.5.5-3.2-2.3-2.2 3.2-.5z"/></g><circle cx="16" cy="16" r="12" fill="none" stroke="#fff" stroke-opacity=".5" stroke-dasharray="2 3"/></svg>`;
   const leagues = [
-    ['Premier League', 'England', markLeague('#7B4DFF')], ['Champions League', 'Europe', markStar('#2F6BFF')], ['La Liga', 'Spain', markLeague('#FF5A5F')],
+    ['Premier League', 'England', markLeague('#7B4DFF')], ['Champions League', 'Europe', markStar('#2F6BFF'), true], ['La Liga', 'Spain', markLeague('#FF5A5F')],
     ['Serie A', 'Italy', markLeague('#2E9BFF')], ['Bundesliga', 'Germany', markLeague('#E5354A')], ['Ligue 1', 'France', markLeague('#4C6BFF')],
-    ['Saudi Pro League', 'Saudi Arabia', markLeague('#16A34A'), true], ['NPFL', 'Nigeria', markLeague('#22C55E'), true], ['Eredivisie', 'Netherlands', markLeague('#FF8A3D')],
+    ['Championship', 'England', markLeague('#16A34A')], ['Euro', 'Europe', markCup('#1A5CFF')], ['Eredivisie', 'Netherlands', markLeague('#FF8A3D')],
     ['Primeira Liga', 'Portugal', markLeague('#10B981')], ['Brasileirão', 'Brazil', markLeague('#F5B800')], ['World Cup', 'FIFA', markCup('#F5B800')],
   ];
   const crestDot = (bg, t) => `<i style="background:${bg}">${t}</i>`;
@@ -1644,14 +1644,14 @@ function showOnboarding(force) {
   const slides = [
     `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob1.webp)"></div><div class="ob-shade blue"></div>
       <div class="ob-content bottom"><h2 class="ob-h">Football<br>Brings Us <em>Together</em></h2>
-      <p class="ob-p">Live scores, fixtures, tables and more — from Saudi and Nigerian football to the world’s biggest leagues.</p></div></section>`,
+      <p class="ob-p">Live scores, fixtures, tables and more from the world’s biggest leagues and tournaments.</p></div></section>`,
     `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow"></div>
       <div class="ob-content"><h2 class="ob-h">Live Scores<br>in <em>Real Time</em></h2>
       <p class="ob-p">Instant updates with the match minute, half-time and penalties.</p>
       <div style="display:flex;justify-content:center;margin-top:20px">${PHONE_LIVE}</div></div></section>`,
     `<section class="onb-slide lt"><div class="ob-light"></div>
       <div class="ob-content"><h2 class="ob-h">Top Leagues &amp;<br><em>Competitions</em></h2>
-      <p class="ob-p">From Europe’s biggest leagues to Saudi, Nigeria and world tournaments.</p>
+      <p class="ob-p">From Europe’s biggest leagues to the Champions League and world tournaments.</p>
       <div class="ob-grid">${leagues.map(([n, c, m, star], k) => `<div class="ob-tile ${star ? 'hl' : ''}" style="animation-delay:${0.25 + k * 0.05}s">${m}<b>${n}</b><small>${c}</small></div>`).join('')}</div></div></section>`,
     `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow" style="left:30%"></div>
       <div class="ob-content"><h2 class="ob-h">Detailed<br><em>Match Centre</em></h2>
