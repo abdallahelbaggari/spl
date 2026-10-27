@@ -520,6 +520,152 @@ footer.foot a{text-decoration:underline}
 .onb:not(.light) .onb-brand small{color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.45)}
 .onb:not(.light) .onb-brand b{text-shadow:0 2px 10px rgba(0,0,0,.35)}
 .ob-copy{text-align:center;margin-top:10px;font-size:11.5px;font-weight:800;letter-spacing:.06em;color:rgba(255,255,255,.85)}
+/* ===================== Onboarding (SPL cinematic) ===================== */
+.onb{background:var(--night)!important}
+.onb-brand b{letter-spacing:.16em!important;font-weight:800!important}
+.onb-brand svg{filter:drop-shadow(0 6px 18px rgba(0,0,0,.4))!important}
+.ob-night{position:absolute;inset:0;overflow:hidden;background:radial-gradient(80% 55% at 50% 38%,#2F6BFF 0%,#0E3FB8 38%,#061230 75%,#040C24 100%)}
+.ob-night.soft{background:radial-gradient(90% 60% at 50% 70%,#1A5CFF 0%,#0B3CC4 55%,#040C24 100%)}
+.ob-night::after{content:"";position:absolute;left:-20%;right:-20%;bottom:-12%;height:34%;border-radius:50% 50% 0 0;background:linear-gradient(180deg,rgba(61,123,255,.25),rgba(6,18,48,0));border-top:2px solid rgba(157,192,255,.12)}
+.ob-beam{position:absolute;top:-30%;width:46%;height:120%;background:linear-gradient(180deg,rgba(157,192,255,.22),rgba(157,192,255,0) 70%);filter:blur(6px);transform-origin:50% 0}
+.ob-beam.b1{left:6%;transform:rotate(18deg)}.ob-beam.b2{right:6%;transform:rotate(-18deg)}
+.onb-slide.play .ob-beam.b1{animation:beam 6s ease-in-out infinite alternate}
+.onb-slide.play .ob-beam.b2{animation:beam2 6s ease-in-out infinite alternate}
+@keyframes beam{from{transform:rotate(26deg);opacity:.6}to{transform:rotate(10deg);opacity:1}}
+@keyframes beam2{from{transform:rotate(-26deg);opacity:.6}to{transform:rotate(-10deg);opacity:1}}
+.ob-conf{position:absolute;inset:0;pointer-events:none}
+.ob-conf i{position:absolute;top:-6%;width:7px;height:12px;border-radius:2px;opacity:0}
+.onb-slide.play .ob-conf i{animation:conf linear infinite}
+.ob-conf.few i:nth-child(odd){display:none}
+@keyframes conf{0%{transform:translateY(0) rotate(var(--rot));opacity:0}8%{opacity:1}100%{transform:translateY(115vh) rotate(calc(var(--rot) + 540deg));opacity:.9}}
+.ob-content.center{justify-content:flex-end;padding-bottom:12px;text-align:left}
+.ob-stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;position:relative}
+.ob-stage::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(157,192,255,.42),transparent);filter:blur(4px)}
+.ob-trophy{position:relative;width:min(46vw,190px);height:auto;filter:drop-shadow(0 22px 40px rgba(0,0,0,.45))}
+.onb-slide.play .ob-trophy{animation:trophyIn 1.1s .1s cubic-bezier(.2,.9,.25,1.15) both}
+@keyframes trophyIn{from{transform:translateY(60px) scale(.7);opacity:0}to{transform:none;opacity:1}}
+.onb-slide.play .ob-shine{animation:shine 3.2s 1.1s ease-in-out infinite}
+@keyframes shine{0%{transform:translateX(0) skewX(-18deg)}55%,100%{transform:translateX(260px) skewX(-18deg)}}
+.ob-mini-cup{width:84px;margin-bottom:10px}.ob-mini-cup .ob-trophy{width:84px;filter:drop-shadow(0 10px 22px rgba(0,0,0,.4))}
+.onb-slide.nt .ob-h em{background:linear-gradient(90deg,#DCE7FF,#EAF1FF 60%,#C9DAFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;text-decoration:none!important;color:transparent!important}
+.onb-slide.lt .ob-h em{background:linear-gradient(90deg,#1A5CFF,#3D7BFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important}
+.onb-slide.nt .ob-p{color:rgba(255,255,255,.84)}
+.onb:not(.light) .ob-next{background:linear-gradient(180deg,#FFFFFF,#EAF1FF 55%,#C9DAFF)!important;color:#0E43D1!important;box-shadow:0 10px 26px rgba(26,92,255,.35)!important}
+.onb.light .ob-next{background:linear-gradient(160deg,#2F6BFF,#0E43D1)!important;color:#fff!important}
+.onb:not(.light) .ob-dots i.done,.onb:not(.light) .ob-dots i.on::after{background:var(--gold)!important}
+.ob-signin{background:linear-gradient(180deg,#FFFFFF,#EAF1FF 55%,#C9DAFF)!important;color:#0E43D1!important;box-shadow:0 12px 30px rgba(26,92,255,.4)!important}
+.ob-signin .pi{background:#0E43D1!important;border-color:#0E43D1!important;color:var(--gold-l)!important}
+.ob-copy{color:rgba(157,192,255,.85)!important}
+/* bracket scene */
+.ob-bk-wrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:10px 0}
+.ob-bracket{width:min(92vw,360px);height:auto;overflow:visible}
+.ob-bracket .bp rect{fill:rgba(255,255,255,.08);stroke:rgba(255,255,255,.28);stroke-width:1.2}
+.ob-bracket .bp text{fill:rgba(255,255,255,.85);font:800 11px var(--body);text-anchor:middle;letter-spacing:.08em}
+.ob-bracket .bp.win rect{fill:rgba(61,123,255,.35);stroke:#7FA6FF}
+.ob-bracket .bp.win text{fill:#fff}
+.ob-bracket .bp.final rect{fill:url(#none);fill:#EAF1FF;stroke:#DCE7FF;stroke-width:1.5}
+.ob-bracket .bp.final text{fill:#0E43D1;font-size:13px}
+.ob-bracket .bl{fill:none;stroke:rgba(157,192,255,.7);stroke-width:1.6;stroke-dasharray:120;stroke-dashoffset:120}
+.ob-bracket .bcup{fill:#EAF1FF}
+.ob-bracket .bp,.ob-bracket .bcup{opacity:0}
+.onb-slide.play .ob-bracket .bp{animation:bpIn .45s both}
+.onb-slide.play .ob-bracket .bl{animation:blDraw .6s both}
+.onb-slide.play .ob-bracket .bcup{animation:cupPop .6s cubic-bezier(.2,.9,.25,1.4) both}
+@keyframes bpIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+@keyframes blDraw{to{stroke-dashoffset:0}}
+@keyframes cupPop{from{opacity:0;transform:translateY(10px) scale(.6);transform-origin:266px 100px}to{opacity:1;transform:none}}
+/* predict scene */
+.ob-pred{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.op-card{background:#fff;border-radius:18px;box-shadow:0 2px 4px rgba(11,27,51,.05),0 14px 34px rgba(14,52,170,.16);overflow:hidden;border:1px solid rgba(11,27,51,.06)}
+.op-top{display:flex;justify-content:space-between;padding:8px 14px;font-size:11px;font-weight:700;color:#5B6B82;background:#EEF3FA}
+.op-mid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 12px;gap:8px}
+.op-t{display:flex;align-items:center;gap:7px;font-weight:800;font-size:13px;color:#0B1B33}.op-t.r{justify-content:flex-end}
+.op-t i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:8px;font-weight:900;color:#fff}
+.op-sc{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;color:#0B1B33}
+.op-sc span{color:#8E9BB0}.op-n{display:inline-block;min-width:38px;padding:4px 0;text-align:center;border-radius:10px;background:#EEF3FA;font-size:30px;line-height:1.1}
+.op-bot{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-top:1px solid rgba(11,27,51,.08);min-height:40px}
+.op-saved,.op-pts{opacity:0;transform:translateY(6px);transition:all .35s cubic-bezier(.2,.9,.25,1.3);font-weight:800;font-size:12.5px}
+.op-saved{color:#1A5CFF}.op-pts{padding:5px 10px;border-radius:12px;background:linear-gradient(180deg,#FFFFFF,#EAF1FF);color:#0E43D1}
+.op-card.saved .op-saved,.op-card.scored .op-pts{opacity:1;transform:none}
+.op-lb{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(14,52,170,.12);border:1px solid rgba(11,27,51,.06);display:flex;flex-direction:column}
+.op-lh{display:flex;justify-content:space-between;padding:8px 14px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5B6B82;background:#EEF3FA}
+.op-r{display:flex;align-items:center;gap:10px;padding:8px 14px;border-top:1px solid rgba(11,27,51,.06);font-size:13px;color:#0B1B33;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s}
+.op-r b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;background:#EEF3FA}
+.op-r:nth-child(2) b{background:linear-gradient(180deg,#9DC0FF,#5B9BFF)}
+.op-r span{flex:1;font-weight:700}.op-r em{font-style:normal;font-family:var(--display);font-weight:800;font-size:18px;color:#1A5CFF}
+.op-r.me{background:linear-gradient(90deg,rgba(157,192,255,.2),transparent)}
+.op-r.me.up{transform:translateY(-100%);background:linear-gradient(90deg,rgba(157,192,255,.4),rgba(157,192,255,.05))}
+.op-r.me.up+.op-r{transform:none}
+.op-lb .op-r:nth-child(2){transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.op-lb:has(.op-r.me.up) .op-r:nth-child(2){transform:translateY(100%)}
+.onb-slide.play .ob-pred .op-card{animation:obUp .6s .2s both}.onb-slide.play .ob-pred .op-lb{animation:obUp .6s .35s both}
+@media (max-height:700px){.ob-trophy{width:min(38vw,150px)}.ob-bracket{width:min(86vw,300px)}.ob-pred{margin-top:12px;gap:8px}.op-r{padding:6px 14px}}
+.onb.light{background:#F2F6FF!important}
+.onb.light .onb-foot{background:transparent}
+.ms-h b{color:#1A5CFF!important}
+.bk-tm .crest,.bk-tm .crest-fb{flex:none!important;width:20px!important}
+/* ===== SPL cinematic onboarding ===== */
+.onb-slide.cine{background:#040C24}
+.ob-stadium{position:absolute;inset:0;width:100%;height:100%;display:block;transform-origin:50% 45%}
+.onb-slide.play .ob-stadium{animation:stadiumZoom 9s ease-out both}
+@keyframes stadiumZoom{from{transform:scale(1.14)}to{transform:scale(1.02)}}
+.ob-vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(3,10,31,.55) 0%,rgba(3,10,31,0) 18%,rgba(3,10,31,0) 42%,rgba(5,15,40,.72) 66%,#040C24 88%)}
+.ob-flash{position:absolute;inset:0;pointer-events:none}
+.ob-flash i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 8px 3px rgba(255,255,255,.8);opacity:0}
+.onb-slide.play .ob-flash i{animation:camFlash 5s infinite}
+@keyframes camFlash{0%,92%,100%{opacity:0}94%{opacity:1}96%{opacity:.2}}
+.ob-content.cine-c{justify-content:flex-end;padding:86px 22px 6px;gap:0}
+.ob-visual{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative}
+.ob-text{position:relative}
+.ob-chip{display:inline-flex;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;color:#9DC0FF;border:1.5px solid rgba(157,192,255,.65);background:rgba(157,192,255,.12);margin-bottom:12px;box-shadow:0 0 22px rgba(157,192,255,.25)}
+.ob-chip svg{width:21px;height:21px}
+.cine .ob-h{font-size:clamp(32px,9.4vw,42px)!important;line-height:1.02!important;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.45)!important}
+.cine .ob-p{color:rgba(255,255,255,.86)!important;font-size:15px;margin-top:10px}
+.onb-slide.play .ob-chip{animation:obUp .6s .05s cubic-bezier(.2,.8,.2,1) both}
+.ob-hero{position:relative;display:flex;align-items:center;justify-content:center}
+.ob-hero::before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(closest-side,rgba(157,192,255,.45),rgba(157,192,255,0));filter:blur(6px)}
+.ob-hero .ob-trophy{width:min(50vw,210px)}
+.ob-phone-wrap{transform:scale(.86);transform-origin:50% 50%}
+.cine .ob-phone{box-shadow:0 0 0 1.5px rgba(255,255,255,.22),0 40px 80px rgba(0,0,0,.6),0 0 70px rgba(61,123,255,.45)!important}
+.cine .ob-bk-wrap{padding:0}
+.cine .ob-pred{margin-top:0;width:100%;max-width:400px}
+.cine .op-card,.cine .op-lb{box-shadow:0 20px 50px rgba(0,0,0,.45)!important}
+.ob-ball-wrap{position:relative;display:flex;justify-content:center}
+.ob-ball-wrap::before{content:"";position:absolute;width:220px;height:220px;top:50%;left:50%;transform:translate(-50%,-55%);border-radius:50%;background:radial-gradient(closest-side,rgba(120,160,255,.45),transparent)}
+.ob-ball{position:relative;width:min(34vw,140px);height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.5))}
+.onb-slide.play .ob-ball{animation:ballIn 1s .1s cubic-bezier(.2,.9,.25,1.2) both}
+@keyframes ballIn{from{transform:translateY(-120px) rotate(-200deg);opacity:0}70%{transform:translateY(6px) rotate(10deg);opacity:1}to{transform:none}}
+.cine.join .ob-card{margin-top:16px}
+/* footer: centred dots + round arrow button */
+.onb-foot{display:grid!important;grid-template-columns:1fr auto 1fr;align-items:center}
+.onb-foot .ob-dots{grid-column:2;justify-content:center}
+.onb-foot .ob-next{grid-column:3;justify-self:end;width:58px;height:58px;padding:0!important;border-radius:50%!important;justify-content:center;transition:width .35s,border-radius .35s}
+.onb-foot .ob-next svg{width:22px;height:22px}
+.onb-foot .ob-next.pill{width:auto;padding:0 22px!important;border-radius:29px!important;white-space:nowrap;gap:8px}
+.onb:not(.light) .ob-next{background:linear-gradient(180deg,#FFFFFF,#EAF1FF 55%,#C9DAFF)!important;color:#0E43D1!important}
+.onb-top{padding-top:calc(16px + env(safe-area-inset-top,0px))!important}
+@media (max-height:740px){.ob-phone-wrap{transform:scale(.68)}.ob-hero .ob-trophy{width:min(40vw,160px)}.ob-bracket{width:min(84vw,290px)!important}.cine .ob-p{font-size:14px}.ob-ball{width:110px}.cine .op-r{padding:5px 14px}}
+@media (max-height:640px){.ob-phone-wrap{transform:scale(.56)}.cine .ob-pred .op-lb{display:none}}
+/* SPL cinematic extras */
+.onb{background:#040C24!important}
+.onb-slide.nt .ob-h em{background:linear-gradient(90deg,#DCE7FF,#7FB0FF 55%,#3D7BFF)!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;text-decoration:none!important}
+.ob-chip{color:#BFD6FF!important;border-color:rgba(157,192,255,.7)!important;background:rgba(61,123,255,.18)!important;box-shadow:0 0 22px rgba(61,123,255,.35)!important}
+.ob-ball-wrap.big .ob-ball{width:min(46vw,190px)}
+.ob-logo-big{display:flex;justify-content:center;position:relative}
+.ob-logo-big::before{content:"";position:absolute;width:220px;height:220px;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(157,192,255,.4),transparent)}
+.ob-logo-big svg{position:relative;width:min(30vw,120px);height:auto;filter:drop-shadow(0 16px 30px rgba(0,0,0,.45))}
+.onb-slide.play .ob-logo-big svg{animation:ballIn .9s .1s cubic-bezier(.2,.9,.25,1.2) both}
+.cine .ob-grid{margin-top:0;width:100%;max-width:420px}
+.cine .ob-tile{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.16)!important}
+.cine .ob-tile b{color:#fff}.cine .ob-tile small{color:rgba(255,255,255,.65)}
+.cine .ob-tile.hl{background:linear-gradient(160deg,#3D7BFF,#1A5CFF)!important;border-color:transparent!important}
+.cine .ob-tile.hl b,.cine .ob-tile.hl small{color:#fff}
+.cine .mc-hero,.cine .ms-bar{border-radius:0}
+.onb:not(.light) .ob-next{background:#fff!important;color:#1A5CFF!important}
+.ob-signin{background:#fff!important;color:#1A5CFF!important}
+.ob-signin .pi{background:#1A5CFF!important;border-color:#1A5CFF!important;color:#fff!important}
+.ob-copy{color:rgba(220,231,255,.85)!important}
+@media (max-height:740px){.cine .ob-grid{gap:6px}.cine .ob-tile{padding:8px 4px 7px}.cine .ob-tile svg{width:22px;height:22px;margin-bottom:4px}}
 @media (prefers-reduced-motion:reduce){.onb-slide .ob-photo{animation:none!important;transform:none}}
 .onb-legal{text-align:center;margin-top:10px;font-size:11.5px;color:var(--dim)}
 .onb-legal a{color:var(--muted);text-decoration:underline}
@@ -1371,7 +1517,7 @@ function viewMe() {
       <div><span>Privacy Policy</span><b><a href="#/privacy" style="color:var(--green)">Read</a></b></div>
       <div><span>Terms of Use</span><b><a href="#/terms" style="color:var(--green)">Read</a></b></div>
       <div><span>Introduction</span><b><button id="replayOnb" style="color:var(--green);font-weight:600">View again</button></b></div>
-      <div><span>Version</span><b>1.11.1 · Pi Mainnet</b></div>
+      <div><span>Version</span><b>1.12.0 · Pi Mainnet</b></div>
     </div>${footer()}</div>`;
   app.querySelectorAll('[data-set]').forEach((b) => b.addEventListener('click', () => {
     const k = b.dataset.set; settings[k] = !settings[k]; saveSettings();
@@ -1616,62 +1762,84 @@ function showOnboarding(force) {
       <div class="ms-tabs"><span class="on">Live</span><span>Fixtures</span><span>Results</span></div>
       <div class="ms-h"><b><span class="pulse" style="width:5px;height:5px;margin:0"></span>Live now</b><span>All ›</span></div>
       <div class="ms-card">
-        <div class="ms-row" id="obRow1"><div class="ms-t">${crestDot('#16A34A', 'RS')}<span>Riyadh</span></div><div class="ms-s"><span id="obSc">1 - 1</span><small id="obMin">77'</small></div><div class="ms-t r">${crestDot('#0EA5A4', 'JU')}<span>Jeddah</span></div></div>
-        <div class="ms-row"><div class="ms-t">${crestDot('#22C55E', 'LC')}<span>Lagos</span></div><div class="ms-s">0 - 0<small>56'</small></div><div class="ms-t r">${crestDot('#E5354A', 'KR')}<span>Kano</span></div></div>
+        <div class="ms-row" id="obRow1"><div class="ms-t">${crestDot('#16A34A', 'NB')}<span>Northbridge</span></div><div class="ms-s"><span id="obSc">1 - 1</span><small id="obMin">77'</small></div><div class="ms-t r">${crestDot('#0EA5A4', 'PR')}<span>Port Royal</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#22C55E', 'LV')}<span>Lakeview</span></div><div class="ms-s">0 - 0<small>56'</small></div><div class="ms-t r">${crestDot('#E5354A', 'ST')}<span>Stonegate</span></div></div>
         <div class="ms-row"><div class="ms-t">${crestDot('#7B4DFF', 'NA')}<span>Northam</span></div><div class="ms-s">1 - 1<small class="ht">HT</small></div><div class="ms-t r">${crestDot('#2E9BFF', 'HU')}<span>Harbour</span></div></div>
       </div>
       <div class="ms-h"><span>Starting soon</span></div>
       <div class="ms-card">
         <div class="ms-row"><div class="ms-t">${crestDot('#F2711C', 'DE')}<span>Desert</span></div><div class="ms-s up">20:00</div><div class="ms-t r">${crestDot('#1A5CFF', 'CF')}<span>Coastal</span></div></div>
-        <div class="ms-row"><div class="ms-t">${crestDot('#F5B800', 'AW')}<span>Abuja</span></div><div class="ms-s up">21:30</div><div class="ms-t r">${crestDot('#5B6B82', 'PS')}<span>Port City</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#F5B800', 'HV')}<span>Highvale</span></div><div class="ms-s up">21:30</div><div class="ms-t r">${crestDot('#5B6B82', 'CB')}<span>Coral Bay</span></div></div>
       </div>
       <div class="ms-h"><span>Finished</span></div>
       <div class="ms-card">
-        <div class="ms-row"><div class="ms-t">${crestDot('#0EA5A4', 'MU')}<span>Medina</span></div><div class="ms-s">3 - 2<small class="ht">FT</small></div><div class="ms-t r">${crestDot('#E5354A', 'DH')}<span>Dammam</span></div></div>
+        <div class="ms-row"><div class="ms-t">${crestDot('#0EA5A4', 'RV')}<span>Riverside</span></div><div class="ms-s">3 - 2<small class="ht">FT</small></div><div class="ms-t r">${crestDot('#E5354A', 'HB')}<span>Harbour</span></div></div>
       </div>
       <div class="ms-nav"><span class="on"><i></i>Home</span><span><i></i>Live</span><span><i></i>Leagues</span><span><i></i>Tables</span><span><i></i>Me</span></div>
     </div></div>`;
   const dots = [[50,88,'a'],[18,50],[38,62],[62,62],[82,50],[30,36],[50,40],[70,36],[25,16],[50,12],[75,16]];
   const PHONE_MATCH = `<div class="ob-phone"><div class="ob-screen">
       <div class="mc-hero"><div class="mc-comp">League · Matchday 8</div>
-        <div class="mc-board"><div class="tm"><i>RS</i>Riyadh Stars</div><div><div class="mc-score">2 – 1</div><span class="mc-min">● 78'</span></div><div class="tm"><i>JU</i>Jeddah Utd</div></div></div>
+        <div class="mc-board"><div class="tm"><i>NB</i>Northbridge</div><div><div class="mc-score">2 – 1</div><span class="mc-min">● 78'</span></div><div class="tm"><i>PR</i>Port Royal</div></div></div>
       <div class="mc-tabs"><span>Summary</span><span class="on">Line-ups</span><span>Stats</span><span>H2H</span></div>
       <div class="mc-pitch">${dots.map(([x, y, a], k) => `<b class="${a || ''}" style="left:${y}%;top:${x}%;animation-delay:${0.6 + k * 0.05}s"></b>`).join('')}</div>
-      <div class="mc-ev" style="animation-delay:1.1s"><em>12'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Riyadh Stars · assist</small></span></div>
-      <div class="mc-ev" style="animation-delay:1.25s"><em>28'</em><svg class="ic" viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="15" rx="2" fill="#F5B800"/></svg><span>Yellow card<small>Jeddah United</small></span></div>
-      <div class="mc-ev" style="animation-delay:1.4s"><em>63'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Riyadh Stars · header</small></span></div>
+      <div class="mc-ev" style="animation-delay:1.1s"><em>12'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Northbridge · assist</small></span></div>
+      <div class="mc-ev" style="animation-delay:1.25s"><em>28'</em><svg class="ic" viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="15" rx="2" fill="#F5B800"/></svg><span>Yellow card<small>Port Royal</small></span></div>
+      <div class="mc-ev" style="animation-delay:1.4s"><em>63'</em><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B1B33" stroke-width="2"/><path d="M12 7.5l4 2.9-1.5 4.7h-5L8 10.4z" fill="#0B1B33"/></svg><span>Goal<small>Northbridge · header</small></span></div>
     </div></div>`;
+  const confetti = Array.from({ length: 22 }, (_, k) => `<i style="left:${(k * 37) % 100}%;animation-delay:${(k % 11) * 0.42}s;animation-duration:${4.8 + (k % 5) * 0.7}s;--rot:${(k * 47) % 360}deg;background:${k % 3 === 0 ? '#9DC0FF' : k % 3 === 1 ? '#5B9BFF' : '#fff'}"></i>`).join('');
+  // ---- Cinematic stadium scenes (original artwork, painted in code: no photos, logos or trademarks) ----
+  const BALL = `<svg class="ob-ball" viewBox="-60 -60 120 120" aria-hidden="true"><defs>
+      <radialGradient id="obBs" cx="-.35" cy="-.4" r="1.25"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#E9EDF6"/><stop offset="1" stop-color="#8D9AB8"/></radialGradient>
+      <radialGradient id="obBh" cx="-.3" cy="-.38" r=".55"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      <radialGradient id="obBd" cx=".35" cy=".45" r=".9"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#040C24" stop-opacity=".55"/></radialGradient>
+      <clipPath id="obBc"><circle r="50"/></clipPath></defs>
+    <ellipse cx="4" cy="56" rx="44" ry="7" fill="#000" opacity=".45"/>
+    <circle r="50" fill="url(#obBs)"/>
+    <g clip-path="url(#obBc)" fill="#0E43D1" stroke="#0B3CC4" stroke-width="1.2" stroke-linejoin="round">
+      <path d="M0-17L16.2-5.3 10 13.8H-10L-16.2-5.3z"/>
+      <path d="M0-17V-36M16.2-5.3l18-6M10 13.8l11 15.4M-10 13.8l-11 15.4M-16.2-5.3l-18-6" fill="none" stroke="#2F6BFF" stroke-width="2"/>
+      <path d="M-12-44L0-36 12-44 9-60H-9z"/><path d="M34-11.5L47-17 58-4 54 14 40 8z"/><path d="M21 29l14-3 10 14-6 16-15-6z"/>
+      <path d="M-21 29l-14-3-10 14 6 16 15-6z"/><path d="M-34-11.5L-47-17-58-4-54 14-40 8z"/></g>
+    <circle r="50" fill="url(#obBd)"/><circle r="50" fill="url(#obBh)" opacity=".7"/>
+    <path d="M-7 45 A50 50 0 0 0 44 23" fill="none" stroke="#9DC0FF" stroke-opacity=".55" stroke-width="2"/></svg>`;
+  const chip = (svg) => `<span class="ob-chip">${svg}</span>`;
+  const CH = {
+    cup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 01-8 0z"/><path d="M8 6H5a3 3 0 003 4M16 6h3a3 3 0 01-3 4M12 13v4M8 20h8M9.5 17h5"/></svg>',
+    live: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+    tree: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h5v4H3zM3 15h5v4H3zM16 10h5v4h-5z"/><path d="M8 7h3v10H8M11 12h5"/></svg>',
+    target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
+    ball: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5l3.8 2.8-1.4 4.5H9.6l-1.4-4.5z"/></svg>',
+    stats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+    pi: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 7h14M9 7v11M15 7v8.5c0 1.5.8 2.5 2.4 2.5"/></svg>',
+  };
+  const flashes = Array.from({ length: 16 }, (_, k) => `<i style="left:${(k * 61 + 7) % 96 + 2}%;top:${32 + ((k * 37) % 22)}%;animation-delay:${(k * 0.53) % 5}s"></i>`).join('');
+  const bg = (v) => `<canvas class="ob-stadium" data-v="${v}"></canvas><div class="ob-flash">${flashes}</div><div class="ob-vig"></div>`;
+  const text = (icon, h, p) => `<div class="ob-text">${chip(icon)}<h2 class="ob-h">${h}</h2><p class="ob-p">${p}</p></div>`;
   const slides = [
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob1.webp)"></div><div class="ob-shade blue"></div>
-      <div class="ob-content bottom"><h2 class="ob-h">Football<br>Brings Us <em>Together</em></h2>
-      <p class="ob-p">Live scores, fixtures, tables and more from the world’s biggest leagues and tournaments.</p></div></section>`,
-    `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow"></div>
-      <div class="ob-content"><h2 class="ob-h">Live Scores<br>in <em>Real Time</em></h2>
-      <p class="ob-p">Instant updates with the match minute, half-time and penalties.</p>
-      <div style="display:flex;justify-content:center;margin-top:20px">${PHONE_LIVE}</div></div></section>`,
-    `<section class="onb-slide lt"><div class="ob-light"></div>
-      <div class="ob-content"><h2 class="ob-h">Top Leagues &amp;<br><em>Competitions</em></h2>
-      <p class="ob-p">From Europe’s biggest leagues to the Champions League and world tournaments.</p>
-      <div class="ob-grid">${leagues.map(([n, c, m, star], k) => `<div class="ob-tile ${star ? 'hl' : ''}" style="animation-delay:${0.25 + k * 0.05}s">${m}<b>${n}</b><small>${c}</small></div>`).join('')}</div></div></section>`,
-    `<section class="onb-slide lt"><div class="ob-light"></div><div class="ob-glow" style="left:30%"></div>
-      <div class="ob-content"><h2 class="ob-h">Detailed<br><em>Match Centre</em></h2>
-      <p class="ob-p">Line-ups, goals, cards, stats and xG — plus full match facts for the biggest leagues.</p>
-      <div class="ob-split">${PHONE_MATCH}<div class="ob-feats">
-        <div class="ob-feat" style="animation-delay:.5s"><span class="fi">${ico.clock}</span><div><b>Live timeline</b><small>Goals, cards and subs</small></div></div>
-        <div class="ob-feat" style="animation-delay:.62s"><span class="fi">${ico.people}</span><div><b>Line-ups</b><small>Formations on the pitch</small></div></div>
-        <div class="ob-feat" style="animation-delay:.74s"><span class="fi">${ico.chart}</span><div><b>Stats</b><small>Possession, shots, xG</small></div></div>
-        <div class="ob-feat" style="animation-delay:.86s"><span class="fi">${ico.doc}</span><div><b>Match facts</b><small>Countdown, H2H &amp; more</small></div></div>
-      </div></div></div></section>`,
-    `<section class="onb-slide"><div class="ob-photo" style="background-image:url(/onboarding/ob5.webp)"></div><div class="ob-shade blue"></div>
-      <div class="ob-content bottom"><h2 class="ob-h">Join the <em>Game</em></h2>
-      <p class="ob-p">Sign in with your Pi account to save your clubs and support SPL with Pi — optional.</p>
+    `<section class="onb-slide nt cine">${bg(0)}<div class="ob-conf">${confetti}</div>
+      <div class="ob-content cine-c"><div class="ob-visual"><div class="ob-ball-wrap big">${BALL}</div></div>
+      ${text(CH.ball, 'Every Match.<br>Every <em>Goal.</em>', 'Live scores, fixtures, results and tables from the world’s biggest leagues and tournaments.')}</div></section>`,
+    `<section class="onb-slide nt cine">${bg(1)}
+      <div class="ob-content cine-c"><div class="ob-visual"><div class="ob-phone-wrap">${PHONE_LIVE}</div></div>
+      ${text(CH.live, 'Live Scores in<br><em>Real Time</em>', 'Instant updates with the match minute, half-time and penalties. Never miss a goal.')}</div></section>`,
+    `<section class="onb-slide nt cine">${bg(2)}
+      <div class="ob-content cine-c"><div class="ob-visual"><div class="ob-grid">${leagues.map(([n, c, m, star], k) => `<div class="ob-tile ${star ? 'hl' : ''}" style="animation-delay:${0.25 + k * 0.05}s">${m}<b>${n}</b><small>${c}</small></div>`).join('')}</div></div>
+      ${text(CH.cup, 'Top Leagues &amp;<br><em>Competitions</em>', 'The Premier League, Champions League, La Liga, Serie A and more, all in one place.')}</div></section>`,
+    `<section class="onb-slide nt cine">${bg(3)}
+      <div class="ob-content cine-c"><div class="ob-visual"><div class="ob-phone-wrap">${PHONE_MATCH}</div></div>
+      ${text(CH.stats, 'Detailed<br><em>Match Centre</em>', 'Match facts, head-to-head, tables and team pages for every game.')}</div></section>`,
+    `<section class="onb-slide nt cine join">${bg(4)}<div class="ob-conf few">${confetti}</div>
+      <div class="ob-content cine-c"><div class="ob-visual"><div class="ob-logo-big">${MARK_SVG}</div></div>
+      <div class="ob-text">${chip(CH.pi)}<h2 class="ob-h">Join the<br><em>Game</em></h2>
+      <p class="ob-p">Sign in with Pi to save your clubs and support SPL with Pi (optional).</p></div>
       <div class="ob-card">
         <button class="ob-signin" id="obSignin"><span class="pi">π</span><span>Sign in with Pi<small>Pi Mainnet</small></span></button>
         <button class="ob-guest" id="onbGuest">Continue as guest</button>
         <div class="ob-legal">By signing in you agree to the <a href="#/terms" data-legal>Terms of Use</a> and <a href="#/privacy" data-legal>Privacy Policy</a>.</div>
         <div class="ob-msg" id="onbMsg"></div>
       </div>
-      <div class="ob-perks"><span>${ico.bolt}Lightweight</span><span>${ico.lock}Private</span><span>${ico.heart}Free</span></div>
+      <div class="ob-perks"><span>${ico.lock}Secure</span><span>${ico.bolt}Fast</span><span>${ico.heart}Free</span></div>
       <div class="ob-copy">© ${new Date().getFullYear()} SPL · spl.pi</div>
       </div></section>`,
   ];
@@ -1683,23 +1851,105 @@ function showOnboarding(force) {
     <div class="onb-top"><div class="onb-brand">${MARK_SVG}<div><b>SPL</b><small>Every Match. Every Moment. Every Goal.</small></div></div><button class="onb-skip" id="onbSkip">Skip</button></div>
     <div class="onb-track" id="onbTrack">${slides.join('')}</div>
     <div class="onb-foot" id="onbFoot"><div class="ob-dots" id="obDots" style="--dur:${SCENE_MS}ms">${Array.from({ length: scenes }, () => '<i></i>').join('')}</div>
-      <button class="ob-next" id="onbNext">Next ${ARROW}</button></div>`;
+      <button class="ob-next" id="onbNext" aria-label="Next">${ARROW}</button></div>`;
   document.body.appendChild(o);
   if (CONFIG.PI_SANDBOX) { const sm = o.querySelector('.ob-signin small'); if (sm) sm.textContent = 'Pi Testnet'; }
-  // preload photos
-  ['ob1', 'ob5'].forEach((n) => { const im = new Image(); im.src = `/onboarding/${n}.webp`; });
+  // Paints an original night-stadium scene on each canvas (seeded, so every scene is stable).
+  function paintStadium(cv) {
+    const v = Number(cv.dataset.v) || 0;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const W = Math.max(1, cv.clientWidth), H = Math.max(1, cv.clientHeight);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const g = cv.getContext('2d'); if (!g) return;
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    let seed = 1234 + v * 977; const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+    const hz = H * [0.6, 0.62, 0.66, 0.64, 0.6][v % 5];        // horizon (pitch edge)
+    const roof = H * [0.24, 0.26, 0.3, 0.28, 0.24][v % 5];     // top of the stands
+    // sky
+    let gr = g.createLinearGradient(0, 0, 0, hz);
+    gr.addColorStop(0, '#030A1F'); gr.addColorStop(0.45, '#0A1C52'); gr.addColorStop(1, '#183A93');
+    g.fillStyle = gr; g.fillRect(0, 0, W, hz);
+    // stands (curved bowl)
+    const curve = (y, k) => y + Math.pow((W / 2 - 0) / W * 2, 2) * k;
+    g.beginPath(); g.moveTo(0, roof + 22); g.quadraticCurveTo(W / 2, roof - 18, W, roof + 22); g.lineTo(W, hz); g.lineTo(0, hz); g.closePath();
+    gr = g.createLinearGradient(0, roof, 0, hz); gr.addColorStop(0, '#0B1A47'); gr.addColorStop(1, '#13286B');
+    g.fillStyle = gr; g.fill();
+    g.save(); g.clip();
+    // crowd: thousands of tiny dots, brighter near the lights
+    const cols = ['#ffffff', '#DCE6FF', '#9DB6FF', '#BFD6FF', '#5B9BFF', '#E5354A', '#C9A27E', '#8A6A50', '#3D7BFF'];
+    const step = 3.2;
+    for (let y = roof - 10; y < hz - 2; y += step) {
+      const t = (y - roof) / (hz - roof);
+      for (let x = 0; x < W; x += step * (0.9 + rnd() * 0.4)) {
+        if (rnd() < 0.12) continue;
+        g.globalAlpha = 0.18 + rnd() * 0.45 * (1 - t * 0.6);
+        g.fillStyle = cols[(rnd() * cols.length) | 0];
+        const s = 0.9 + rnd() * (1.1 + t * 0.9);
+        g.fillRect(x + rnd() * 1.4, y + rnd() * 1.4, s, s);
+      }
+    }
+    g.globalAlpha = 1;
+    // tier rails
+    g.strokeStyle = 'rgba(160,190,255,.16)'; g.lineWidth = 1.2;
+    [0.33, 0.62].forEach((f) => { const y = roof + (hz - roof) * f; g.beginPath(); g.moveTo(0, y + 10); g.quadraticCurveTo(W / 2, y - 8, W, y + 10); g.stroke(); });
+    // advertising-board strip (blank, no brands)
+    gr = g.createLinearGradient(0, 0, W, 0); gr.addColorStop(0, 'rgba(47,91,211,.55)'); gr.addColorStop(0.5, 'rgba(157,192,255,.55)'); gr.addColorStop(1, 'rgba(47,91,211,.55)');
+    g.fillStyle = gr; g.fillRect(0, hz - 7, W, 5);
+    g.restore();
+    // roof edge
+    g.fillStyle = '#040B22'; g.beginPath(); g.moveTo(0, roof + 22); g.quadraticCurveTo(W / 2, roof - 18, W, roof + 22); g.lineTo(W, roof + 12); g.quadraticCurveTo(W / 2, roof - 28, 0, roof + 12); g.closePath(); g.fill();
+    // floodlights: row along the roof + two big banks
+    g.globalCompositeOperation = 'lighter';
+    const lamp = (x, y, r, a) => { const rg = g.createRadialGradient(x, y, 0, x, y, r); rg.addColorStop(0, `rgba(255,255,255,${a})`); rg.addColorStop(0.25, `rgba(190,215,255,${a * 0.45})`); rg.addColorStop(1, 'rgba(120,160,255,0)'); g.fillStyle = rg; g.fillRect(x - r, y - r, r * 2, r * 2); };
+    for (let k = 0; k <= 14; k++) { const x = (W / 14) * k; const y = roof + 17 - Math.sin((k / 14) * Math.PI) * 30; lamp(x, y, 14, 0.75); }
+    const banks = [[W * 0.1, roof - H * 0.1], [W * 0.9, roof - H * 0.1]];
+    if (v === 2 || v === 3) banks.push([W * 0.5, roof - H * 0.13]);
+    banks.forEach(([bx, by]) => {
+      // beam down to the pitch
+      const bm = g.createLinearGradient(bx, by, W / 2, hz + 60);
+      bm.addColorStop(0, 'rgba(200,220,255,.20)'); bm.addColorStop(1, 'rgba(200,220,255,0)');
+      g.fillStyle = bm; g.beginPath(); g.moveTo(bx - 18, by); g.lineTo(bx + 18, by); g.lineTo(W / 2 + W * 0.42, hz + 80); g.lineTo(W / 2 - W * 0.42, hz + 80); g.closePath(); g.fill();
+      lamp(bx, by, 110, 0.55);
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) lamp(bx - 20 + c * 10, by - 8 + r * 8, 7, 0.95);
+    });
+    // horizon glow
+    lamp(W / 2, hz - 10, W * 0.75, 0.16);
+    g.globalCompositeOperation = 'source-over';
+    // pitch
+    gr = g.createLinearGradient(0, hz, 0, H); gr.addColorStop(0, '#1C5E45'); gr.addColorStop(0.5, '#0F3D2E'); gr.addColorStop(1, '#061A16');
+    g.fillStyle = gr; g.fillRect(0, hz, W, H - hz);
+    const n = 9;
+    for (let k = 0; k < n; k++) {
+      if (k % 2) continue;
+      const y0 = hz + (H - hz) * Math.pow(k / n, 1.7), y1 = hz + (H - hz) * Math.pow((k + 1) / n, 1.7);
+      g.fillStyle = 'rgba(255,255,255,.045)'; g.fillRect(0, y0, W, y1 - y0);
+    }
+    g.strokeStyle = 'rgba(255,255,255,.35)'; g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(-10, hz + 6); g.lineTo(W + 10, hz + 6); g.stroke();
+    g.strokeStyle = 'rgba(255,255,255,.22)'; g.lineWidth = 2;
+    g.beginPath(); g.ellipse(W / 2, hz + (H - hz) * 0.42, W * 0.36, (H - hz) * 0.1, 0, 0, Math.PI * 2); g.stroke();
+    g.beginPath(); g.moveTo(W / 2, hz + 6); g.lineTo(W / 2, H); g.stroke();
+    // haze + vignette
+    gr = g.createLinearGradient(0, hz - 50, 0, hz + 40); gr.addColorStop(0, 'rgba(150,180,255,0)'); gr.addColorStop(0.5, 'rgba(150,180,255,.12)'); gr.addColorStop(1, 'rgba(150,180,255,0)');
+    g.fillStyle = gr; g.fillRect(0, hz - 50, W, 90);
+    const vg = g.createRadialGradient(W / 2, H * 0.45, Math.min(W, H) * 0.3, W / 2, H * 0.5, Math.max(W, H) * 0.75);
+    vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(2,6,20,.65)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+  }
+  const paintAll = () => o.querySelectorAll('.ob-stadium').forEach(paintStadium);
+  requestAnimationFrame(paintAll);
+  let rsz = null; const onRsz = () => { if (!document.body.contains(o)) return window.removeEventListener('resize', onRsz); clearTimeout(rsz); rsz = setTimeout(paintAll, 150); };
+  window.addEventListener('resize', onRsz);
   const track = o.querySelector('#onbTrack'), next = o.querySelector('#onbNext'), skip = o.querySelector('#onbSkip'),
     foot = o.querySelector('#onbFoot'), dotsWrap = o.querySelector('#obDots'), dotEls = [...dotsWrap.querySelectorAll('i')],
     signin = o.querySelector('#obSignin'), guest = o.querySelector('#onbGuest'), msg = o.querySelector('#onbMsg');
   const finish = () => { clearTimeout(timerId); clearInterval(scoreTimer); store.set('onboarded', true); o.style.opacity = '0'; o.style.transition = 'opacity .3s'; setTimeout(() => o.remove(), 320); if (location.hash.startsWith('#/me')) viewMe(); };
-  function liveDemo(on) {
+  function demo(scene) {
     clearInterval(scoreTimer);
     const sc = o.querySelector('#obSc'), mn = o.querySelector('#obMin'), row = o.querySelector('#obRow1');
-    if (!sc) return;
-    sc.textContent = '1 - 1'; mn.textContent = "77'";
-    if (!on) return;
+    if (sc) { sc.textContent = '1 - 1'; mn.textContent = "77'"; }
+    if (reduced) return;
     let t = 0;
-    scoreTimer = setInterval(() => {
+    if (scene === 1) scoreTimer = setInterval(() => {
       t++;
       if (t === 2) { sc.textContent = '2 - 1'; row.classList.remove('ms-flash'); void row.offsetWidth; row.classList.add('ms-flash'); }
       mn.textContent = (77 + t) + "'";
@@ -1716,9 +1966,9 @@ function showOnboarding(force) {
     foot.classList.toggle('hide', last);
     o.classList.toggle('light', o.querySelectorAll('.onb-slide')[i].classList.contains('lt'));
     skip.style.visibility = last ? 'hidden' : 'visible';
-    next.innerHTML = (i === scenes - 1 ? 'Get started ' : 'Next ') + ARROW;
+    next.innerHTML = i === scenes - 1 ? 'Get started ' + ARROW : ARROW; next.classList.toggle('pill', i === scenes - 1); next.setAttribute('aria-label', i === scenes - 1 ? 'Get started' : 'Next');
     msg.textContent = '';
-    liveDemo(i === 1 && !reduced);
+    demo(i);
     if (!last && !reduced) timerId = setTimeout(() => go(i + 1), SCENE_MS);
   }
   const pause = () => { clearTimeout(timerId); dotsWrap.classList.add('paused'); };
